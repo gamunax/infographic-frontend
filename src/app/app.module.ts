@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 import { InfographicComponent } from './infographic/infographic.component';
 
 @NgModule({
@@ -18,7 +20,8 @@ import { InfographicComponent } from './infographic/infographic.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

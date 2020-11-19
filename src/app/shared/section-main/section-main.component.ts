@@ -20,7 +20,7 @@ export class SectionMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.tagService.getTags().subscribe((tag: Tag[]) => {
-      this.tags = tag;
+      this.tags = tag.sort((a, b) => a.order - b.order);
     });
   }
 
