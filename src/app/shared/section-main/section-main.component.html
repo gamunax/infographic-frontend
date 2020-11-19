@@ -1,0 +1,10 @@
+<section class="row">
+  <div
+    *ngFor="let tag of tags"
+    class="col-12 col-xl-2 d-flex justify-content-center"
+  >
+    <nz-card nzHoverable class="section-card">
+      <img [alt]="tag.name" [src]="PATH_IMAGEN + tag.image.url" />
+    </nz-card>
+  </div>
+</section>
