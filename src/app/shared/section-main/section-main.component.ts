@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 export class SectionMainComponent implements OnInit {
 
   tags: Tag[];
-  readonly PATH_IMAGEN = environment.pathImage;
+  readonly API = environment.api;
 
   constructor(
     private tagService: TagService

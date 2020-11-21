@@ -1,0 +1,8 @@
+<section>
+  <h1>{{title}}</h1>
+  <div class="d-flex flex-wrap">
+    <div class="col-xl-3 mx-4" *ngFor="let infographic of data">
+      <app-card [data]="infographic"></app-card>
+    </div>
+  </div>
+</section>

@@ -4,19 +4,20 @@ export interface Infographic {
   url: string;
   shared: number;
   views: number;
-  vote: number;
-  infographic_photos: InfographicPhotos[]
+  votes: number;
+  tag: InfographicTags;
+  images: InfographicImages[];
 }
 
-export interface InfographicPhotos {
-  id: string;
-  title: string;
-  url: string;
-  image: Photos[]
-}
-
-export interface Photos {
+export interface InfographicImages {
   id: string;
   name: string;
   url: string;
+  alternativeText: string;
+}
+
+export interface InfographicTags {
+  id: string;
+  image: InfographicImages;
+  name: string;
 }

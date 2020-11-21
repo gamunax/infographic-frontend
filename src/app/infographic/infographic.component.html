@@ -1,7 +1,13 @@
 <main class="container-fluid">
   <h1 class="text-center p-3">Infografías</h1>
-  <app-section-main></app-section-main>
-  <div class="col-3">
-    <app-card></app-card>
-  </div>
+  <!-- <app-section-main></app-section-main> -->
+  <!--html-->
+  <app-section [title]="'HTML'" [data]="INFOGRAPHIC_HOME.HTML"></app-section>
+
+  <!--css-->
+  <app-section [title]="'CSS'" [data]="INFOGRAPHIC_HOME.HTML"></app-section>
+
+  <!--javascript-->
+  <app-section [title]="'Javascript'" [data]="INFOGRAPHIC_HOME.JAVASCRIPT"></app-section>
+  
 </main>
