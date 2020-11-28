@@ -1,0 +1,31 @@
+@import "../../../scss/mixins";
+
+::ng-deep button:focus {
+  outline: none;
+}
+
+.section-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 16px;
+
+  @include extra-large {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  @include mega-extra-large {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include large {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

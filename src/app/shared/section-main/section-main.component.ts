@@ -23,5 +23,4 @@ export class SectionMainComponent implements OnInit {
       this.tags = tag.sort((a, b) => a.order - b.order);
     });
   }
-
 }

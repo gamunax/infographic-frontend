@@ -15,7 +15,7 @@ export class InfographicComponent implements OnInit {
     HTML: undefined,
     CSS: undefined,
     JAVASCRIPT: undefined
-  }
+  };
 
   constructor(
     private infographicService: InfographicService
@@ -37,7 +37,7 @@ export class InfographicComponent implements OnInit {
   }
 
   filterInfographic(data: Infographic[], id): Infographic[] {
-    return data.filter(item => item.tag.id === id);
+    return data.filter(item => item.tag?.id === id);
   }
 
 }

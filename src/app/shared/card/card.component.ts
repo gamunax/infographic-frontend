@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 import { Infographic } from '../models/infographic';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,18 +9,14 @@ import { environment } from 'src/environments/environment';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, OnChanges, OnDestroy {
 
+  @ViewChild('slickModal') slickModal: SlickCarouselComponent;
   @Input() data: Infographic;
 
-  readonly API = environment.api;
+  datos;
 
-  /*slides = [
-    { img: "http://placehold.it/350x150/000000" },
-    { img: "http://placehold.it/350x150/111111" },
-    { img: "http://placehold.it/350x150/333333" },
-    { img: "http://placehold.it/350x150/666666" }
-  ];*/
+  readonly API = environment.api;
 
   slideConfig = {
     slidesToShow: 1,
@@ -33,5 +30,27 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
+    /*if (this.slickModal && this.slickModal.initialized) {
+      this.slickModal.unslick();
+      this.slickModal.initSlick();
+    }*/
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes?.data.firstChange) {
+      console.log(changes);
+      if (this.slickModal && this.slickModal.initialized) {
+        this.slickModal.slickGoTo(0);
+      }
+    }
+  }
+
+  trackBy(index: number): number {
+    return index;
+  }
+
+  ngOnDestroy() {
+    this.slickModal.unslick();
+    console.log('xxxxxaaaa');
   }
 }
