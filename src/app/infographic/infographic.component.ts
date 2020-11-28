@@ -32,7 +32,6 @@ export class InfographicComponent implements OnInit {
         CSS: this.filterInfographic(infographic, InfographicTags.CSS),
         JAVASCRIPT: this.filterInfographic(infographic, InfographicTags.JAVASCRIPT)
       };
-      console.log(this.INFOGRAPHIC_HOME);
     });
   }
 

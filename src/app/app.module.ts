@@ -11,6 +11,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 import { InfographicComponent } from './infographic/infographic.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { InfographicComponent } from './infographic/infographic.component';
     SharedModule,
     HttpClientModule,
     SlickCarouselModule,
-    NzModalModule
+    NzModalModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
