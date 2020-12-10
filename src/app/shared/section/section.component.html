@@ -3,7 +3,7 @@
   <div class="section-images">
     <div class="" *ngFor="let infographic of data">
       <a (click)="openModalImages(infographic)">
-        <app-image [data]="infographic"></app-image>
+        <app-image [images]="infographic"></app-image>
       </a>
       <!--<app-card [data]="infographic"></app-card>-->
     </div>
@@ -18,6 +18,6 @@
   (nzOnOk)="handleOk()"
 >
   <div class="px-3 pt-4 pb-0">
-    <app-card [data]="infographics"></app-card>
+    <app-carousel [data]="infographics"></app-carousel>
   </div>
 </nz-modal>

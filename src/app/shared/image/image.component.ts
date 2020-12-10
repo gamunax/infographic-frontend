@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
-import { Infographic } from '../models/infographic';
 
 @Component({
   selector: 'app-image',
@@ -10,11 +9,11 @@ import { Infographic } from '../models/infographic';
 })
 export class ImageComponent implements OnInit {
   firstImage: string;
-  readonly API = environment.api;
+  readonly API_IMAGES = environment.apiImages;
 
-  @Input() set data(infographic: Infographic) {
-    const [{url}] = infographic?.images;
-    this.firstImage = url;
+  @Input() set images(data) {
+    const [{url}] = data?.images;
+    this.firstImage = this.API_IMAGES + url;
   }
 
   constructor() { }

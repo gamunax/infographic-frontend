@@ -5,19 +5,21 @@ export interface Infographic {
   shared: number;
   views: number;
   votes: number;
-  tag: InfographicTags;
+  tags: InfographicTags[];
   images: InfographicImages[];
 }
 
 export interface InfographicImages {
   id: string;
-  name: string;
-  url: string;
-  alternativeText: string;
+  name?: string;
+  url?: string;
+  alternativeText?: string;
+  order?: number;
 }
 
 export interface InfographicTags {
   id: string;
   image: InfographicImages;
   name: string;
+  order: number;
 }

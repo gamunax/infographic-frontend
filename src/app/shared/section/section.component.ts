@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { CarouselComponent } from '../carousel/carousel.component';
 import { Infographic } from '../models/infographic';
 
 @Component({
@@ -6,7 +8,7 @@ import { Infographic } from '../models/infographic';
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
-export class SectionComponent implements OnInit {
+export class SectionComponent implements OnInit, OnDestroy {
   @Input() title: string;
   @Input() data: Infographic[];
 
@@ -16,6 +18,10 @@ export class SectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  resetData(): void{
+    this.infographics = undefined;
   }
 
   openModalImages(infographic: Infographic): void {
@@ -31,6 +37,10 @@ export class SectionComponent implements OnInit {
 
   handleCancel(): void {
     console.log('Button cancel clicked!');
+    this.resetData();
     this.isVisible = false;
+  }
+
+  ngOnDestroy(): void {
   }
 }
