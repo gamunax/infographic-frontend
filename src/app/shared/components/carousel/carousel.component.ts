@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
-import { Infographic } from '../models/infographic';
+import { Infographic } from '../../models/infographic';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { environment } from 'src/environments/environment';
 

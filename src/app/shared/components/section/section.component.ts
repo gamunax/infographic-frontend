@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CarouselComponent } from '../carousel/carousel.component';
-import { Infographic } from '../models/infographic';
+import { Infographic } from '../../models/infographic';
+import { ImageConfig } from '../../models/image';
 
 @Component({
   selector: 'app-section',
@@ -9,7 +10,7 @@ import { Infographic } from '../models/infographic';
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit, OnDestroy {
-  @Input() title: string;
+  // @Input() title: string;
   @Input() data: Infographic[];
 
   isVisible = false;
@@ -20,7 +21,7 @@ export class SectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  resetData(): void{
+  resetData(): void {
     this.infographics = undefined;
   }
 

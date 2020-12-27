@@ -1,0 +1,48 @@
+@import "../../../../scss/mixins";
+@import "../../../../scss//abstracts/colors/colors.scss";
+
+::ng-deep button:focus {
+  outline: none;
+}
+
+section {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  overflow-y: hidden;
+
+  h1 {
+    background: -webkit-linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.section-images {
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  grid-gap: 16px;
+
+  @include extra-large {
+    grid-template-columns: repeat(7, 260px);
+  }
+
+  @include mega-extra-large {
+    grid-template-columns: repeat(8, 260px);
+  }
+
+  @include large {
+    grid-template-columns: repeat(5, 260px);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(3, 260px);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 260px);
+  }
+}

@@ -11,8 +11,7 @@ export class ImageComponent implements OnInit {
   firstImage: string;
   readonly API_IMAGES = environment.apiImages;
 
-  @Input() set images(data) {
-    const [{url}] = data?.images;
+  @Input() set images(url) {
     this.firstImage = this.API_IMAGES + url;
   }
 

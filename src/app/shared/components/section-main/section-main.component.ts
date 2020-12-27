@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TagService } from '../../core/services/tag.service';
-import { Tag } from '../../shared/models/tag';
-import { environment } from '../../../environments/environment';
+import { TagService } from '../../../core/services/tag.service';
+import { Tag } from '../../models/tag';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-section-main',

@@ -6,11 +6,12 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-import { HeaderComponent } from './header/header.component';
-import { SectionMainComponent } from './section-main/section-main.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { SectionComponent } from './section/section.component';
-import { ImageComponent } from './image/image.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SectionMainComponent } from './components/section-main/section-main.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { SectionComponent } from './components/section/section.component';
+import { ImageComponent } from './components/image/image.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ImageComponent } from './image/image.component';
     SectionMainComponent,
     CarouselComponent,
     SectionComponent,
-    ImageComponent
+    ImageComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { ImageComponent } from './image/image.component';
     SectionMainComponent,
     CarouselComponent,
     SectionComponent,
-    ImageComponent
+    ImageComponent,
+    CardComponent
   ]
 })
 export class SharedModule { }

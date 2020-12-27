@@ -1,0 +1,12 @@
+nav {
+  background: radial-gradient(100% 100% at 0% 0%, rgba(255, 41, 129, 0.2) 0%, rgba(255, 41, 129, 0) 100%);
+  padding: 0 20px;
+  & a {
+    padding: 50px 0 26px;
+    margin-right: 0;
+  }
+
+  & button {
+    padding: 50px 0 26px;
+  }
+}
