@@ -1,5 +1,5 @@
 export const environment = {
-  api: 'http://localhost:1337',
+  api: 'https://infographic.dev/api',
   apiImages: '',
   production: true
 };
