@@ -4,7 +4,7 @@ export interface Image {
 }
 
 export interface ImageConfig {
-  isOneImage: boolean;
   width: string;
   height: string;
+  hasCount: boolean;
 }

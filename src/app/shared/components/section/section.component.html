@@ -1,9 +1,9 @@
 <section class="py-2" *ngFor="let infographic of data">
   <ng-container *ngFor="let tag of infographic | keyvalue">
-    <h1 class="mt-3">{{tag.key}}</h1>
+    <h1 class="mt-3">{{ tag.key }}</h1>
     <div class="section-images">
-      <div class="" *ngFor="let item of tag.value">
-        <a (click)="openModalImages(item)">
+      <div *ngFor="let item of tag.value">
+        <a (click)="openModalImages(item)"> <!--aplicar output-->
           <app-card [data]="item?.images[0]?.url"></app-card>
         </a>
       </div>

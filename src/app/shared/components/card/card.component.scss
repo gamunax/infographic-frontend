@@ -1,0 +1,48 @@
+@import "../../../../scss/mixins";
+@import "../../../../scss//abstracts/colors/colors.scss";
+
+.info-card {
+  position: relative;
+
+  &__caption {
+    background-color: $background-color-default;
+
+    & h2 {
+      color: $text-white;
+      font-size: 14px;
+      line-height: 20px;
+      padding: 20px;
+    }
+  }
+
+  &__options {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 20px;
+  }
+
+  &__views {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: $text-lead;
+  }
+
+  &__shared {
+    align-items: center;
+    background-clip: padding-box;
+    border-radius: 8px;
+    color: $color-brand-primary-default;
+    display: flex;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 13px;
+    letter-spacing: 0.05em;
+    padding: 8px 20px;
+    border: solid 1px transparent;
+    background: linear-gradient($background-color-default, $background-color-default) padding-box,
+      linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
+  }
+}

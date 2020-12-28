@@ -1,10 +1,13 @@
 <div class="info-card">
-  <app-image [images]="data"></app-image>
+  <app-image [images]="data" [configuration]="imageConfig"></app-image>
   <div class="info-card__caption">
     <h2>12 common mistakes in html</h2>
     <div class="info-card__options">
-      <div>74 vistas</div>
-      <button>COMPARTIR</button>
+      <div class="info-card__views">74 vistas</div>
+      <div class="info-card__shared">
+        <img src="./assets/icons/share.svg">
+        <label for="" class="ml-2 mb-0">COMPARTIR</label>
+      </div>
     </div>
   </div>
 </div>

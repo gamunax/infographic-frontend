@@ -1,1 +1,9 @@
-<img [src]="firstImage" width="100%">
+<img
+  [src]="firstImage"
+  [width]="configuration?.width"
+  [height]="configuration?.height"
+/>
+
+<div *ngIf="configuration?.hasCount" class="image-total">
+  <span>1 / 6 </span>
+</div>

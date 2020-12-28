@@ -9,9 +9,16 @@ import { ImageConfig } from '../../models/image';
 export class CardComponent implements OnInit {
   @Input() data;
 
+  imageConfig: ImageConfig;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.imageConfig = {
+      width: '260',
+      height: '260',
+      hasCount: true
+    };
   }
 
 }

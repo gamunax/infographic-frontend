@@ -6,25 +6,21 @@
 }
 
 section {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  overflow-y: hidden;
-
   h1 {
-    background: -webkit-linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%);
     font-size: 32px;
     font-weight: 700;
     line-height: 40px;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include background-gradient;
   }
 }
 
 .section-images {
   display: grid;
+  flex-wrap: nowrap;
+  flex-direction: column;
   grid-template-columns: repeat(4, 260px);
   grid-gap: 16px;
+  overflow-y: hidden;
 
   @include extra-large {
     grid-template-columns: repeat(7, 260px);

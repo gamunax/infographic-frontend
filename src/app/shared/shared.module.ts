@@ -12,6 +12,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { SectionComponent } from './components/section/section.component';
 import { ImageComponent } from './components/image/image.component';
 import { CardComponent } from './components/card/card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardComponent } from './components/card/card.component';
     CarouselComponent,
     SectionComponent,
     ImageComponent,
-    CardComponent
+    CardComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { CardComponent } from './components/card/card.component';
     CarouselComponent,
     SectionComponent,
     ImageComponent,
-    CardComponent
+    CardComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

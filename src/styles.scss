@@ -2,8 +2,10 @@
 @import 'scss/mixins';
 @import 'scss/components/button';
 @import 'scss/abstracts/colors/colors';
+@import 'scss/fonts/fonts';
 
 body {
+  font-family: 'SourceSansPro', sans-serif;
   background: #0D1524 ;
 }
 

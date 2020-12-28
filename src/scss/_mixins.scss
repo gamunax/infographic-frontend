@@ -1,24 +1,24 @@
 @mixin mobile {
   @media only screen and (max-width: 766px) {
-      @content;
+    @content;
   }
 }
 
 @mixin tablet {
   @media only screen and (max-width: 991px) {
-      @content;
+    @content;
   }
 }
 
 @mixin desktop {
   @media only screen and (max-width: 1366px) {
-      @content;
+    @content;
   }
 }
 
-@mixin  large {
+@mixin large {
   @media only screen and (max-width: 1599px) {
-      @content;
+    @content;
   }
 }
 
@@ -32,4 +32,10 @@
   @media only screen and (min-width: 2100px) {
     @content;
   }
+}
+
+@mixin background-gradient {
+  background: -webkit-linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
