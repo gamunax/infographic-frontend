@@ -35,7 +35,7 @@
 }
 
 @mixin background-gradient {
-  background: -webkit-linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%);
+  background: linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

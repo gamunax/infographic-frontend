@@ -1,5 +1,32 @@
 @import "../../../../scss//abstracts/colors/colors.scss";
 
 footer {
+  align-items: center;
   background-color: $background-color-dark-2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 60px 20px;
+}
+
+.footer-content {
+  text-align: center;
+  color: #8292AE;
+  font-size: 12px;
+  line-height: 20px
+}
+
+.footer-year {
+  font-weight: 700;
+}
+
+.footer-author {
+  font-style: italic;
+}
+
+hr {
+  border: 1px solid #8292AE;
+  opacity: 0.2;
+  margin: 20px 0;
+  width: 100%;
 }

@@ -6,10 +6,18 @@
 }
 
 section {
+  margin-top: 30px;
+
+  &:last-of-type {
+    margin-bottom: 60px;
+  }
+
   h1 {
+    display: inline-block;
     font-size: 32px;
     font-weight: 700;
     line-height: 40px;
+    margin: 0;
     @include background-gradient;
   }
 }
@@ -21,6 +29,7 @@ section {
   grid-template-columns: repeat(4, 260px);
   grid-gap: 16px;
   overflow-y: hidden;
+  margin-top: 20px;
 
   @include extra-large {
     grid-template-columns: repeat(7, 260px);
