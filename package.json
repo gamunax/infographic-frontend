@@ -24,6 +24,7 @@
     "carousel": "0.0.3",
     "jquery": "^3.5.1",
     "ng-zorro-antd": "^10.1.2",
+    "ngx-google-analytics": "^11.0.0",
     "ngx-slick-carousel": "^0.5.1",
     "rxjs": "~6.6.0",
     "slick-carousel": "^1.8.1",

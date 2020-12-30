@@ -2,11 +2,27 @@ nav {
   background: radial-gradient(100% 100% at 0% 0%, rgba(255, 41, 129, 0.2) 0%, rgba(255, 41, 129, 0) 100%);
   padding: 0 20px;
   & a {
-    padding: 50px 0 26px;
+    padding: 50px 0 36px;
     margin-right: 0;
   }
 
   & button {
-    padding: 50px 0 26px;
+    padding: 50px 0 36px;
+  }
+}
+
+.search {
+  padding: 0 20px 30px;
+
+  input {
+    color: #67758E;
+    border: 1px solid rgba(103, 117, 142, 0.5);
+    background-color: #151D2F;
+    border-radius: 8px;
+    font-size: 16px;
+    height: 44px;
+    line-height: 20px;
+    padding-left: 10px;
+    width: 100%;
   }
 }

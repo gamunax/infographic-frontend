@@ -5,6 +5,12 @@
 export const environment = {
   api: 'http://localhost:3000',
   apiImages: 'http://localhost:3000',
+  analytics: {
+    status: false,
+    services: {
+      ga: ''
+    }
+  },
   production: false
 };
 
