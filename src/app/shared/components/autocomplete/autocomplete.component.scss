@@ -1,0 +1,39 @@
+@import "../../../../scss//abstracts/colors/colors.scss";
+
+.certain-search-item-count {
+  position: absolute;
+  color: #999;
+  right: 16px;
+}
+
+.more-link {
+  float: right;
+}
+
+nz-input-group {
+  background-color: #151d2f;
+  border: 1px solid rgba(103, 117, 142, 0.5);
+  border-radius: 8px;
+  height: 44px;
+
+  input {
+    background-color: #151d2f;
+    color: #67758e;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+::placeholder {
+  color: #67758e;
+  opacity: 1;
+}
+
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:hover {
+  border: solid 1px transparent;
+  background: linear-gradient($background-color-default, $background-color-default) padding-box,
+    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
+  box-shadow: none;
+}

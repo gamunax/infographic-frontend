@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzInputModule } from 'ng-zorro-antd/input';
+
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SectionMainComponent } from './components/section-main/section-main.component';
@@ -14,6 +20,12 @@ import { SectionComponent } from './components/section/section.component';
 import { ImageComponent } from './components/image/image.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 
 @NgModule({
   declarations: [
@@ -23,15 +35,19 @@ import { FooterComponent } from './components/footer/footer.component';
     SectionComponent,
     ImageComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    AutocompleteComponent
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     NzCardModule,
     SlickCarouselModule,
     NzModalModule,
-    NzAutocompleteModule
+    NzAutocompleteModule,
+    NzInputModule
   ],
   exports: [
     HeaderComponent,
@@ -40,7 +56,13 @@ import { FooterComponent } from './components/footer/footer.component';
     SectionComponent,
     ImageComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    AutocompleteComponent
+  ],
+  providers: [
+    {
+      provide: NZ_ICONS, useValue: icons
+    }
   ]
 })
 export class SharedModule { }

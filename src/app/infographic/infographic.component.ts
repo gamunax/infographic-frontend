@@ -31,7 +31,6 @@ export class InfographicComponent implements OnInit {
   loadInfographics(): void {
     this.infograficFacade.getSectionByTag()
       .subscribe(res => {
-        console.log(res);
         this.infographicSection = res;
       });
   }
