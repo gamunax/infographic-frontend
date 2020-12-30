@@ -1,27 +1,30 @@
-<div>
-  <nz-input-group nzSize="large" [nzSuffix]="suffixIcon">
-    <input 
+<div class="autocomplete-search">
+  <nz-input-group
+    nzSize="large"
+    [nzPrefix]="suffixIcon"
+    [nzSuffix]="inputClearTpl"
+  >
+    <input
       placeholder="Buscar"
       nz-input
       [(ngModel)]="inputValue"
-      (ngModelChange)="onChange($event)" 
-      [nzAutocomplete]="auto" />
+      (ngModelChange)="onChange($event)"
+      [nzAutocomplete]="auto"
+    />
   </nz-input-group>
   <ng-template #suffixIcon>
-    <i nz-icon nzType="search"></i>
+    <i nz-icon nzType="search" style="color: #8292ae; font-size: 24px"></i>
   </ng-template>
-  <nz-autocomplete #auto>
-    <nz-auto-optgroup *ngFor="let group of optionGroups" [nzLabel]="groupTitle">
-      <ng-template #groupTitle>
-        <span
-          >{{ group.title }}
-          <a class="more-link" href="https://www.google.com/search?q=ng+zorro" target="_blank">更多</a>
-        </span>
-      </ng-template>
-      <nz-auto-option *ngFor="let option of group.children" [nzLabel]="option.title" [nzValue]="option.title">
-        {{ option.title }}
-        <span class="certain-search-item-count">{{ option.count }} 人 关注</span>
-      </nz-auto-option>
-    </nz-auto-optgroup>
-  </nz-autocomplete>
+  <ng-template #inputClearTpl
+    ><i
+      nz-icon
+      class="ant-input-clear-icon"
+      nzTheme="fill"
+      nzType="close-circle"
+      *ngIf="inputValue"
+      (click)="inputValue = null"
+      style="color: #8292AE; font-size: 20px;"
+    ></i
+  ></ng-template>
+  <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
 </div>

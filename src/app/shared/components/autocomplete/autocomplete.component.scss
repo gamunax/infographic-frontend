@@ -18,9 +18,10 @@ nz-input-group {
 
   input {
     background-color: #151d2f;
-    color: #67758e;
+    color: $text-white;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 20.11px;
+    padding-left: 4px;
   }
 }
 
@@ -37,3 +38,41 @@ nz-input-group {
     linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
   box-shadow: none;
 }
+
+::ng-deep .ant-select-dropdown {
+  background-color: rgba(21, 29, 47, 0.9);
+  border: solid 1px transparent;
+  background: linear-gradient($background-color-default, $background-color-default) padding-box,
+    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+::ng-deep .ant-select-item-option-active:not(.ant-select-item-option-disabled),
+.ant-slider-rail {
+  background-color: rgba(21, 29, 47, 0.9);
+  // box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+::ng-deep .ant-select-item {
+  color: $text-white;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.11px;
+}
+
+::ng-deep .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  color: $text-white;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.11px;
+}
+
+/*::ng-deep .ant-input-suffix {
+  left: 4px;
+  position: absolute;
+  top: 8px;
+}*/

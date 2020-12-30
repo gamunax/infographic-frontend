@@ -9,9 +9,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
-import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { IconDefinition } from '@ant-design/icons-angular';
-import * as AllIcons from '@ant-design/icons-angular/icons';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SectionMainComponent } from './components/section-main/section-main.component';
@@ -22,10 +22,7 @@ import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
-const antDesignIcons = AllIcons as {
-  [key: string]: IconDefinition;
-};
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
+const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 @NgModule({
   declarations: [
@@ -47,7 +44,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     SlickCarouselModule,
     NzModalModule,
     NzAutocompleteModule,
-    NzInputModule
+    NzInputModule,
+    NzIconModule.forRoot(icons)
   ],
   exports: [
     HeaderComponent,
@@ -59,10 +57,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     FooterComponent,
     AutocompleteComponent
   ],
-  providers: [
-    {
-      provide: NZ_ICONS, useValue: icons
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: NZ_ICONS, useValue: icons
+  //   }
+  // ]
 })
 export class SharedModule { }

@@ -9,54 +9,19 @@ import { AutocompleteOptionGroups } from '../../models/autocomplete.model';
 export class AutocompleteComponent implements OnInit {
 
   inputValue?: string;
-  optionGroups: AutocompleteOptionGroups[] = [];
+  filteredOptions: string[] = [];
+  options = ['Animation', 'C - C++', 'Clean Code', 'Clean Code', 'Animation', 'C - C++', 'Animation', 'C - C++', 'Animation', 'C - C++', 'Animation', 'C - C++'];
 
-  constructor() { }
+  constructor() {
+    this.filteredOptions = this.options;
+  }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.optionGroups = [
-        {
-          title: '话题',
-          children: [
-            {
-              title: 'AntDesign',
-              count: 10000
-            },
-            {
-              title: 'AntDesign UI',
-              count: 10600
-            }
-          ]
-        },
-        {
-          title: '问题',
-          children: [
-            {
-              title: 'AntDesign UI 有多好',
-              count: 60100
-            },
-            {
-              title: 'AntDesign 是啥',
-              count: 30010
-            }
-          ]
-        },
-        {
-          title: '文章',
-          children: [
-            {
-              title: 'AntDesign 是一个设计语言',
-              count: 100000
-            }
-          ]
-        }
-      ];
-    }, 1000);
   }
 
   onChange(value: string): void {
-    console.log(value);
+    this.filteredOptions = this.options
+    .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 }
 
