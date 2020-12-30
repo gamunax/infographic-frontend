@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SectionMainComponent } from './components/section-main/section-main.component';
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SharedRoutingModule,
     NzCardModule,
     SlickCarouselModule,
-    NzModalModule
+    NzModalModule,
+    NzAutocompleteModule
   ],
   exports: [
     HeaderComponent,
