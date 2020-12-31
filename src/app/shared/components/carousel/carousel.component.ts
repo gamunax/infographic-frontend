@@ -13,7 +13,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild('slickModal') slickModal: SlickCarouselComponent;
   @Input() set data(infographic: Infographic) {
-   this.infographic = infographic;
+    this.infographic = infographic;
   }
 
   infographic: Infographic;
@@ -24,9 +24,20 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
   slideConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
-    infinite: false,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav',
     dots: true,
     lazyLoad: 'ondemand'
+  };
+
+  slideConfig2 = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: true,
+    centerMode: true,
+    focusOnSelect: true
   };
 
   constructor() { }
