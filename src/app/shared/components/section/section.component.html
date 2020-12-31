@@ -3,7 +3,8 @@
     <h1>{{ tag.key }}</h1>
     <div class="section-images">
       <div *ngFor="let item of tag.value">
-        <a (click)="openModalImages(item)"> <!--aplicar output-->
+        <a (click)="openDetail(item, infographicNavigation)">
+          <!--aplicar output-->
           <app-card [data]="item?.images[0]?.url"></app-card>
         </a>
       </div>
@@ -11,7 +12,15 @@
   </ng-container>
 </section>
 
-<nz-modal
+<ng-container *ngIf="isOpenDetail">
+  <app-overlay-navigation
+    [infographicNavigation]="infographicNavigation"
+    [id]="infographicId"
+  >
+  </app-overlay-navigation>
+</ng-container>
+
+<!--<nz-modal
   [(nzVisible)]="isVisible"
   nzTitle=""
   nzFooter="null"
@@ -21,4 +30,4 @@
   <div class="px-3 pt-4 pb-0">
     <app-carousel [data]="infographics"></app-carousel>
   </div>
-</nz-modal>
+</nz-modal>-->

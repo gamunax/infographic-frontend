@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfographicComponent } from './infographic.component';
+import { InfographicDetailComponent } from './components/infographic-detail/infographic-detail.component';
+import { InfographicComponent } from './components/infographic/infographic.component';
 
 const routes: Routes = [
   {
     path: '',
     component: InfographicComponent
+  },
+  {
+    path: ':id/:url',
+    component: InfographicDetailComponent
   }
 ];
 

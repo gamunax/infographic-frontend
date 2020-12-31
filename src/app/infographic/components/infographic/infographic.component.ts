@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InfographicFacade } from '../core/facades/infographic.facade';
-import { InfographicService } from '../core/services/infographic.service';
-import { TagService } from '../core/services/tag.service';
-import { InfographicTagsId } from '../shared/constants/infographic-tag';
-import { Infographic, InfographicTags } from '../shared/models/infographic';
-import { Tag } from '../shared/models/tag';
+import { InfographicFacade } from '../../../core/facades/infographic.facade';
+import { InfographicNavigation } from '../../../shared/constants/close-navigation.constant';
+import { Infographic, InfographicTags } from '../../../shared/models/infographic';
 
 @Component({
   selector: 'app-infographic',
@@ -14,12 +11,11 @@ import { Tag } from '../shared/models/tag';
 export class InfographicComponent implements OnInit {
   infographics: Infographic[];
   tags: InfographicTags[];
+  infographicNavigation = InfographicNavigation;
 
   infographicSection;
 
   constructor(
-    private infographicService: InfographicService,
-    private tagService: TagService,
     private infograficFacade: InfographicFacade
   ) { }
 

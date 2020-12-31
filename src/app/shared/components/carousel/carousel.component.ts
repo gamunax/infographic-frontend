@@ -12,8 +12,11 @@ import { environment } from 'src/environments/environment';
 export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild('slickModal') slickModal: SlickCarouselComponent;
-  @Input() data: Infographic;
+  @Input() set data(infographic: Infographic) {
+   this.infographic = infographic;
+  }
 
+  infographic: Infographic;
   datos;
 
   readonly API_IMAGES = environment.apiImages;
@@ -39,5 +42,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('xxxxxxx');
+    // this.slickModal.initSlick();
   }
 }

@@ -3,7 +3,7 @@
   #slickModal="slick-carousel"
   [config]="slideConfig"
 >
-  <div ngxSlickItem *ngFor="let image of data?.images" class="slide">
+  <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
     <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
   </div>
 </ngx-slick-carousel>

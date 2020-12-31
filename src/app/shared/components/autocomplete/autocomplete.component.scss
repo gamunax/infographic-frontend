@@ -33,26 +33,28 @@ nz-input-group {
 .ant-input-affix-wrapper-focused,
 .ant-input-affix-wrapper:focus,
 .ant-input-affix-wrapper:hover {
-  border: solid 1px transparent;
-  background: linear-gradient($background-color-default, $background-color-default) padding-box,
-    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
-  box-shadow: none;
+  // border: solid 1px transparent;
+  border: 1px solid rgba(103, 117, 142, 0.5);
+  /*background: linear-gradient($background-color-default, $background-color-default) padding-box,
+    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;*/
+  //box-shadow: none;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 ::ng-deep .ant-select-dropdown {
-  background-color: rgba(21, 29, 47, 0.9);
+  background-color: rgba(21, 29, 47, 0.8);
   border: solid 1px transparent;
-  background: linear-gradient($background-color-default, $background-color-default) padding-box,
-    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;
-  box-shadow: none;
+  /*background: linear-gradient($background-color-default, $background-color-default) padding-box,
+    linear-gradient(90deg, $color-brand-primary-default 0%, $color-brand-secondary-default 100%) border-box;*/
+  // box-shadow: none;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 8px;
 }
 
 ::ng-deep .ant-select-item-option-active:not(.ant-select-item-option-disabled),
 .ant-slider-rail {
-  background-color: rgba(21, 29, 47, 0.9);
-  // box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  background-color: rgba(21, 29, 47, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 8px;
 }
@@ -70,9 +72,3 @@ nz-input-group {
   font-weight: 700;
   line-height: 20.11px;
 }
-
-/*::ng-deep .ant-input-suffix {
-  left: 4px;
-  position: absolute;
-  top: 8px;
-}*/

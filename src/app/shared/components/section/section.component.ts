@@ -1,8 +1,10 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { Infographic } from '../../models/infographic';
-import { ImageConfig } from '../../models/image';
+import { NavigationType, InfographicNavigation } from '../../constants/close-navigation.constant';
 
 @Component({
   selector: 'app-section',
@@ -12,11 +14,16 @@ import { ImageConfig } from '../../models/image';
 export class SectionComponent implements OnInit, OnDestroy {
   // @Input() title: string;
   @Input() data: Infographic[];
+  @Input() infographicNavigation: NavigationType;
 
-  isVisible = false;
+  isOpenDetail = false;
   infographics: Infographic;
+  infographicId: string;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
   }
@@ -25,21 +32,29 @@ export class SectionComponent implements OnInit, OnDestroy {
     this.infographics = undefined;
   }
 
-  openModalImages(infographic: Infographic): void {
-    console.log(infographic);
-    this.isVisible = true;
-    this.infographics = infographic;
+  openDetail({ id, url }: Infographic, infographicNavigation: NavigationType): void {
+    this.isOpenDetail = true;
+    this.infographicId = id;
+    console.log(infographicNavigation);
+    if (document.getElementById('infographic-detail')) {
+      document.getElementById('infographic-detail').style.width = '100%';
+    }
+    if (infographicNavigation === NavigationType.PAGE) {
+      this.router.navigate([`/${id}/${url}`]);
+    } else {
+      this.location.go(`/${id}/${url}`);
+    }
   }
 
   handleOk(): void {
     console.log('Button ok clicked!');
-    this.isVisible = false;
+    this.isOpenDetail = false;
   }
 
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.resetData();
-    this.isVisible = false;
+    this.isOpenDetail = false;
   }
 
   ngOnDestroy(): void {

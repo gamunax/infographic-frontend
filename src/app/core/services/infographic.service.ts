@@ -19,4 +19,8 @@ export class InfographicService {
   getInfographics(): Observable<Infographic[]> {
     return this.http.get<Infographic[]>(`${this.API}/infografics`);
   }
+
+  getInfographicById(id: string): Observable<Infographic> {
+    return this.http.get<Infographic>(`${this.API}/infografics/${id}`);
+  }
 }

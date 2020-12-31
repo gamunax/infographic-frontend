@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
-import { InfographicComponent } from './infographic/infographic.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -24,8 +23,7 @@ const analyticsModules = environment.analytics.status ? [
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    InfographicComponent
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

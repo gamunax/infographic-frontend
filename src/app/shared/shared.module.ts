@@ -21,6 +21,7 @@ import { ImageComponent } from './components/image/image.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { OverlayNavigationComponent } from './components/overlay-navigation/overlay-navigation.component';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
@@ -33,7 +34,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     ImageComponent,
     CardComponent,
     FooterComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    OverlayNavigationComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     ImageComponent,
     CardComponent,
     FooterComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    OverlayNavigationComponent
   ],
   // providers: [
   //   {

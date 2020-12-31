@@ -39,4 +39,8 @@ export class InfographicFacade {
   searchTag(tags, id: string): boolean {
     return tags.some(tag => tag.id === id);
   }
+
+  getInfographicById(id: string): Observable<Infographic> {
+    return this.infographicService.getInfographicById(id);
+  }
 }
