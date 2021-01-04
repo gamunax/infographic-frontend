@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
@@ -9,7 +9,7 @@ import { Infographic } from 'src/app/shared/models/infographic';
   templateUrl: './overlay-navigation.component.html',
   styleUrls: ['./overlay-navigation.component.scss']
 })
-export class OverlayNavigationComponent implements OnInit, OnChanges {
+export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() infographicNavigation: NavigationType;
   @Input() id: string;
@@ -28,17 +28,13 @@ export class OverlayNavigationComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log('xxx');
   }
 
   ngOnChanges(): void {
-    console.log('data');
     document.getElementById('infographic-detail').style.display = 'block';
-    console.log(this.infographicId || this.id);
     this.infographicFacade.getInfographicById(this.infographicId || this.id)
       .subscribe(res => {
         this.infographic = JSON.parse(JSON.stringify(res));
-        console.log(res);
       });
   }
 
@@ -47,7 +43,12 @@ export class OverlayNavigationComponent implements OnInit, OnChanges {
       this.router.navigate(['/']);
     } else {
       document.getElementById('infographic-detail').style.display = 'none';
+      this.infographic = null;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.infographic = null;
   }
 
 }

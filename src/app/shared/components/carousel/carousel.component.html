@@ -1,20 +1,26 @@
-<ngx-slick-carousel
-  class="carousel slider-for"
-  #slickModal="slick-carousel"
-  [config]="slideConfig"
->
-  <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
-    <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
-  </div>
-</ngx-slick-carousel>
+<div class="mb-2">
+  <ngx-slick-carousel
+    id="carousel-main"
+    class="carousel slider-for"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
+      <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
+    </div>
+  </ngx-slick-carousel>
+</div>
 
-<ngx-slick-carousel
-  class="carousel slider-nav"
-  #slickModal2="slick-carousel"
-  [config]="slideConfig2"
->
-  <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
-    <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
-  </div>
-</ngx-slick-carousel>
+<div>
+  <ngx-slick-carousel
+    id="carousel-detail"
+    class="carousel slider-nav"
+    #slickModal2="slick-carousel"
+    [config]="slideConfig2"
+  >
+    <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
+      <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
+    </div>
+  </ngx-slick-carousel>
+</div>
 

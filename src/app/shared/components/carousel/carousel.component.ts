@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 import { Infographic } from '../../models/infographic';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild('slickModal') slickModal: SlickCarouselComponent;
+  @ViewChild('slickModal2') slickModal2: SlickCarouselComponent;
+
   @Input() set data(infographic: Infographic) {
     this.infographic = infographic;
   }
@@ -27,7 +29,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
     arrows: false,
     fade: true,
     asNavFor: '.slider-nav',
-    dots: true,
+    // dots: true,
     lazyLoad: 'ondemand'
   };
 
@@ -36,7 +38,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
     slidesToScroll: 1,
     asNavFor: '.slider-for',
     dots: true,
-    centerMode: true,
+    centerMode: false,
     focusOnSelect: true
   };
 
@@ -53,7 +55,5 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('xxxxxxx');
-    // this.slickModal.initSlick();
   }
 }
