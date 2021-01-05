@@ -8,6 +8,7 @@ import { ImageConfig } from '../../models/image';
 })
 export class CardComponent implements OnInit {
   @Input() data;
+  @Input() value;
 
   imageConfig: ImageConfig;
 

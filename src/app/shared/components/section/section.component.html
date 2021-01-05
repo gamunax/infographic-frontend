@@ -5,7 +5,7 @@
       <div *ngFor="let item of tag.value">
         <a (click)="openDetail(item, infographicNavigation)">
           <!--aplicar output-->
-          <app-card [data]="item?.images[0]?.url"></app-card>
+          <app-card [data]="item?.images[0]?.url" [value]="item"></app-card>
         </a>
       </div>
     </div>
@@ -20,15 +20,3 @@
   >
   </app-overlay-navigation>
 </ng-container>
-
-<!--<nz-modal
-  [(nzVisible)]="isVisible"
-  nzTitle=""
-  nzFooter="null"
-  (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()"
->
-  <div class="px-3 pt-4 pb-0">
-    <app-carousel [data]="infographics"></app-carousel>
-  </div>
-</nz-modal>-->
