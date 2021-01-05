@@ -6,7 +6,7 @@
     [config]="slideConfig"
   >
     <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
-      <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
+      <img class="main-image" [attr.data-lazy]="API_IMAGES + image.url" alt=""/>
     </div>
   </ngx-slick-carousel>
 </div>
@@ -19,7 +19,7 @@
     [config]="slideConfig2"
   >
     <div ngxSlickItem *ngFor="let image of infographic?.images; trackBy: trackBy" class="slide">
-      <img [attr.data-lazy]="API_IMAGES + image.url" alt="" width="100%" />
+      <img class="detail-image" [attr.data-lazy]="API_IMAGES + image.url" alt="" />
     </div>
   </ngx-slick-carousel>
 </div>

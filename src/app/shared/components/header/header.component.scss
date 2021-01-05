@@ -1,9 +1,15 @@
+@import '../../../../scss/mixins';
+
 nav {
   background: radial-gradient(100% 100% at 0% 0%, rgba(255, 41, 129, 0.2) 0%, rgba(255, 41, 129, 0) 100%);
   padding: 0 20px;
   & a {
     padding: 50px 0 36px;
     margin-right: 0;
+
+    @include tablet-large {
+      padding-top: 46px;
+    }
   }
 
   & button {
@@ -25,5 +31,15 @@ nav {
     line-height: 20px;
     padding-left: 10px;
     width: 100%;
+  }
+}
+
+.search-header {
+  margin: 40px 0 36px;
+  padding: 0;
+  width: 500px;
+
+  @include desktop {
+    width: 335px;
   }
 }

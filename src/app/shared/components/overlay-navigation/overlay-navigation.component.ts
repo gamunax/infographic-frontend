@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
@@ -14,12 +15,15 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   @Input() infographicNavigation: NavigationType;
   @Input() id: string;
 
+  @Output() closeModal = new EventEmitter();
+
   infographicId: string;
   infographic: Infographic;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private infographicFacade: InfographicFacade
   ) {
     this.route.params.subscribe(({id}) => {
@@ -39,13 +43,16 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   close(infographicNavigation: NavigationType): void {
+    this.closeModal.emit(true);
     if (infographicNavigation === InfographicNavigation.PAGE) {
       this.router.navigate(['/']);
     } else {
       document.getElementById('infographic-detail').style.display = 'none';
+      this.location.go(`/`);
       this.infographic = null;
     }
   }
+
 
   ngOnDestroy(): void {
     this.infographic = null;

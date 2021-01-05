@@ -29,7 +29,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
     arrows: false,
     fade: true,
     asNavFor: '.slider-nav',
-    // dots: true,
+    dots: true,
     lazyLoad: 'ondemand'
   };
 
@@ -37,9 +37,25 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
     slidesToShow: 3,
     slidesToScroll: 1,
     asNavFor: '.slider-for',
-    dots: true,
+    dots: false,
     centerMode: false,
-    focusOnSelect: true
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 2600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   constructor() { }

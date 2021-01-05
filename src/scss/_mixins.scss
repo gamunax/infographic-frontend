@@ -10,6 +10,12 @@
   }
 }
 
+@mixin tablet-large {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media only screen and (max-width: 1366px) {
     @content;

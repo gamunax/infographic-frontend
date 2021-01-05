@@ -2,12 +2,14 @@
   <div class="infographic-detail__close" (click)="close(infographicNavigation)">
     <i nz-icon nzType="close" style="color: #8292AE; font-size: 20px"></i>
   </div>
-  <div class="infographic-title">
-    <h1>{{infographic?.title}}</h1>
-  </div>
-  <div class="overlay-content">
-    <app-carousel
-      [data]="infographic">
-    </app-carousel>
+  <div class="d-block d-lg-flex flex-lg-row-reverse">
+    <div class="infographic-title col-lg-4">
+      <h1>{{infographic?.title}}</h1>
+    </div>
+    <div class="overlay-content col-lg-8">
+      <app-carousel
+        [data]="infographic">
+      </app-carousel>
+    </div>
   </div>
 </div>

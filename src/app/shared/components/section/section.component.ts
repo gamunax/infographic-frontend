@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -12,7 +12,6 @@ import { NavigationType, InfographicNavigation } from '../../constants/close-nav
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit, OnDestroy {
-  // @Input() title: string;
   @Input() data: Infographic[];
   @Input() infographicNavigation: NavigationType;
 
@@ -55,6 +54,10 @@ export class SectionComponent implements OnInit, OnDestroy {
     console.log('Button cancel clicked!');
     this.resetData();
     this.isOpenDetail = false;
+  }
+
+  closeModal(isClosed): void {
+    this.isOpenDetail = !isClosed;
   }
 
   ngOnDestroy(): void {

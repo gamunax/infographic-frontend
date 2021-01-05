@@ -1,7 +1,53 @@
+@import "../../../../scss/mixins";
+
 ::ng-deep .slick-prev:before {
   color: green;
 }
 
 ::ng-deep .slick-next:before {
   color: green;
+}
+
+.main-image {
+  width: auto;
+  height: 560px;
+  margin: 0 auto;
+
+  @include extra-large {
+    width: auto;
+    height: 560px;
+  }
+
+  @include tablet-large {
+    width: auto;
+  }
+
+  @include tablet {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.detail-image {
+  width: 80%;
+  margin: 0 auto;
+
+  @include extra-large {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  @include tablet-large {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  @include mobile {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+:focus {
+  outline: red;
 }
