@@ -28,7 +28,7 @@ section {
 
 .section-images {
   display: grid;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column;
   grid-template-columns: repeat(4, 260px);
   grid-gap: 16px;
@@ -36,19 +36,19 @@ section {
   margin-top: 20px;
 
   @include extra-large {
-    grid-template-columns: repeat(7, 260px);
+    grid-template-columns: repeat(10, 260px);
   }
 
   @include mega-extra-large {
-    grid-template-columns: repeat(8, 260px);
+    grid-template-columns: repeat(10, 260px);
   }
 
   @include large {
-    grid-template-columns: repeat(5, 260px);
+    grid-template-columns: repeat(10, 260px);
   }
 
   @include tablet {
-    grid-template-columns: repeat(3, 260px);
+    grid-template-columns: repeat(10, 260px);
   }
 
   @include mobile {
