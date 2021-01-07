@@ -1,5 +1,9 @@
 <div class="info-card">
-  <app-image [images]="data" [configuration]="imageConfig"></app-image>
+  <app-image
+    [images]="data"
+    [configuration]="imageConfig"
+    [dataSource]="value">
+  </app-image>
   <div class="info-card__caption">
     <h2>{{value?.title}}</h2>
     <div class="info-card__options">

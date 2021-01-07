@@ -2,8 +2,8 @@
   <nz-input-group
     nzSize="large"
     [nzPrefix]="suffixIcon"
-    [nzSuffix]="inputClearTpl"
-  >
+    >
+    <!-- [nzSuffix]="inputClearTpl" -->
     <input
       placeholder="Buscar"
       nz-input
@@ -22,7 +22,7 @@
       nzTheme="fill"
       nzType="close-circle"
       *ngIf="inputValue"
-      (click)="inputValue = null"
+      (click)="inputClear()"
       style="color: #8292AE; font-size: 20px;"
     ></i
   ></ng-template>

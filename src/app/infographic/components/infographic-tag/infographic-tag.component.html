@@ -1,0 +1,19 @@
+<main class="container-fluid">
+  <h1>{{infographicSection?.length}} resultados encontrados para <span>{{searchTag}}</span></h1>
+  <div class="section-images">
+    <div *ngFor="let item of infographicSection">
+      <a (click)="openDetail(item, infographicNavigation.OVERLAY)">
+        <app-card [data]="item?.images[0]?.url" [value]="item"></app-card>
+      </a>
+    </div>
+  </div>
+</main>
+{{isOpenDetail}}
+<ng-container *ngIf="isOpenDetail">
+  <app-overlay-navigation
+    [infographicNavigation]="infographicNavigation"
+    [id]="infographicId"
+    (closeModal)="closeModal($event)"
+  >
+  </app-overlay-navigation>
+</ng-container>

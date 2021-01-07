@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ImageConfig } from '../../models/image';
@@ -8,7 +8,7 @@ import { ImageConfig } from '../../models/image';
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss']
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent implements OnInit, OnChanges {
   firstImage: string;
   readonly API_IMAGES = environment.apiImages;
 
@@ -16,10 +16,15 @@ export class ImageComponent implements OnInit {
     this.firstImage = this.API_IMAGES + url;
   }
   @Input() configuration: ImageConfig;
+  @Input() dataSource;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges() {
+    console.log(this.dataSource);
   }
 
 }

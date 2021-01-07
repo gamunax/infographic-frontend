@@ -1,0 +1,45 @@
+@import "../../../../scss/mixins";
+@import "../../../../scss//abstracts/colors/colors.scss";
+
+h1 {
+  font-size: 24px;
+  line-height: 40px;
+  color: #8292AE;
+  width: 100%;
+  text-align: center;
+
+  & span {
+    font-weight: 700;
+    @include background-gradient;
+  }
+}
+
+.section-images {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: column;
+  grid-template-columns: repeat(4, 260px);
+  grid-gap: 16px;
+  overflow-y: hidden;
+  margin-top: 20px;
+
+  @include extra-large {
+    grid-template-columns: repeat(10, 260px);
+  }
+
+  @include mega-extra-large {
+    grid-template-columns: repeat(10, 260px);
+  }
+
+  @include large {
+    grid-template-columns: repeat(10, 260px);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(10, 260px);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(4, 260px);
+  }
+}

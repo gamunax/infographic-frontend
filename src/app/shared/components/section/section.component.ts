@@ -1,8 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { CarouselComponent } from '../carousel/carousel.component';
 import { Infographic } from '../../models/infographic';
 import { NavigationType, InfographicNavigation } from '../../constants/close-navigation.constant';
 
@@ -15,8 +13,8 @@ export class SectionComponent implements OnInit, OnDestroy {
   @Input() data: Infographic[];
   @Input() infographicNavigation: NavigationType;
 
-  isOpenDetail = false;
   infographics: Infographic;
+  isOpenDetail = false;
   infographicId: string;
 
   constructor(

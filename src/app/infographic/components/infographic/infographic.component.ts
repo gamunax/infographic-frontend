@@ -21,13 +21,13 @@ export class InfographicComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInfographics();
-    this.loadInfographics();
   }
 
   loadInfographics(): void {
     this.infograficFacade.getSectionByTag()
       .subscribe(res => {
         this.infographicSection = res;
+        console.log(res);
       });
   }
 

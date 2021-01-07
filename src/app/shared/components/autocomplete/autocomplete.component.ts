@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AutocompleteOptionGroups } from '../../models/autocomplete.model';
+import { Tag } from '../../models/tag';
 
 @Component({
   selector: 'app-autocomplete',
@@ -8,12 +9,23 @@ import { AutocompleteOptionGroups } from '../../models/autocomplete.model';
 })
 export class AutocompleteComponent implements OnInit {
 
+  @Input() set dataList(data: Tag[]) {
+    if (data) {
+      this.options = data
+        .map(tag => tag.name)
+        .sort();
+      this.filteredOptions = this.options;
+    }
+  };
+  @Output() search = new EventEmitter();
+  @Output() clear = new EventEmitter();
+
   inputValue?: string;
   filteredOptions: string[] = [];
-  options = ['Animation', 'C - C++', 'Clean Code', 'Clean Code', 'Animation', 'C - C++', 'Animation', 'C - C++', 'Animation', 'C - C++', 'Animation', 'C - C++'];
+  options;
 
   constructor() {
-    this.filteredOptions = this.options;
+
   }
 
   ngOnInit(): void {
@@ -21,7 +33,20 @@ export class AutocompleteComponent implements OnInit {
 
   onChange(value: string): void {
     this.filteredOptions = this.options
-    .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+      .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+
+    const existTag = this.options.some(option => option === value);
+    if (existTag) {
+      this.search.emit(value)
+    } else {
+      this.search.emit(null)
+    }
+  }
+
+  inputClear(): void {
+    this.inputValue = null; 
+    this.filteredOptions = this.options;
+    this.clear.emit(true)
   }
 }
 

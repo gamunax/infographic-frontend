@@ -10,13 +10,15 @@ import { SharedModule } from '../shared/shared.module';
 
 import { InfographicComponent } from './components/infographic/infographic.component';
 import { InfographicDetailComponent } from './components/infographic-detail/infographic-detail.component';
+import { InfographicTagComponent } from './components/infographic-tag/infographic-tag.component';
 
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
   declarations: [
     InfographicComponent,
-    InfographicDetailComponent
+    InfographicDetailComponent,
+    InfographicTagComponent
   ],
   imports: [
     CommonModule,

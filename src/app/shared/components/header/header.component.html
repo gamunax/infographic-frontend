@@ -11,11 +11,29 @@
     </button>
 
     <div class="search-header search d-none d-md-block">
-      <app-autocomplete></app-autocomplete>
+      <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
+      <!-- <app-autocomplete
+    [dataList]="tags"
+    (search)="search($event)"
+    (clear)="clear($event)"
+  ></app-autocomplete> -->
     </div>
   </div>
 </nav>
 
 <div *ngIf="isSearch" class="search d-block d-md-none">
-  <app-autocomplete></app-autocomplete>
+  <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
+  <!-- <app-autocomplete
+    [dataList]="tags"
+    (search)="search($event)"
+    (clear)="clear($event)"
+  ></app-autocomplete> -->
 </div>
+
+<ng-template #autocomplete>
+  <app-autocomplete
+    [dataList]="tags"
+    (search)="search($event)"
+    (clear)="clear($event)"
+  ></app-autocomplete>
+</ng-template>
