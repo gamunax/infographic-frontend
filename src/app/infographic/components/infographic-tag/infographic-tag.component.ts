@@ -27,6 +27,7 @@ export class InfographicTagComponent implements OnInit {
     this.route.params.subscribe(({ tag }) => {
       this.searchTag = tag;
       console.log(tag);
+      this.infographicSection = [];
       this.loadInfographics();
     });
   }
