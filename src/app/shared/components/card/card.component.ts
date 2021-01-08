@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ImageConfig } from '../../models/image';
+
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-card',
@@ -7,6 +9,8 @@ import { ImageConfig } from '../../models/image';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+  @ViewChild('inputCopy') inputCopy: ElementRef;
+
   @Input() data;
   @Input() value;
   @Output() open = new EventEmitter();
@@ -16,7 +20,9 @@ export class CardComponent implements OnInit {
   isVisible: boolean;
   https = 'https://infographic.dev';
 
-  constructor() { }
+  constructor(
+    private message: NzMessageService
+  ) { }
 
   ngOnInit(): void {
     this.imageConfig = {
@@ -33,6 +39,23 @@ export class CardComponent implements OnInit {
 
   visibleChange(isVisible: boolean): void {
     this.isVisible = isVisible;
+  }
+
+  focus(target): void {
+    console.log(target);
+    target.select();
+    target.setSelectionRange(0, 99999);
+  }
+
+  copy(url: string): void {
+    console.log(this.inputCopy);
+    this.inputCopy.nativeElement.select();
+    this.inputCopy.nativeElement.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    // this.message.create('success', `This is a message of`);
+    this.message.success('Link copied', {
+      nzDuration: 1500
+    });
   }
 
 }

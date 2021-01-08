@@ -50,16 +50,15 @@
         </div>
         <div class="share-copy-link">
           <div class="share-copy-link__text pb-2">or copy link</div>
-          <input [value]="https+'/'+value?.id+'/'+value?.url">
-          <a>
+          <input #inputCopy 
+            [value]="https+'/'+value?.id+'/'+value?.url"
+            (focus)="focus($event.target)"
+            readonly>
+          <a (click)="copy(https+'/'+value?.id+'/'+value?.url)">
             <img src="./assets/icons/copy.svg">
           </a>
         </div>
       </div>
     </nz-dropdown-menu>
   </div>
-
-  <!-- <div *ngIf="share" class="info-card__share-modal">
-    <h1>hola</h1>
-  </div> -->
 </div>
