@@ -8,6 +8,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDropDownModule  } from 'ng-zorro-antd/dropdown';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -47,6 +48,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzModalModule,
     NzAutocompleteModule,
     NzInputModule,
+    NzDropDownModule,
     NzIconModule.forRoot(icons)
   ],
   exports: [

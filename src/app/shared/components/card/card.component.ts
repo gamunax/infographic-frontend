@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImageConfig } from '../../models/image';
 
 @Component({
@@ -9,8 +9,12 @@ import { ImageConfig } from '../../models/image';
 export class CardComponent implements OnInit {
   @Input() data;
   @Input() value;
+  @Output() open = new EventEmitter();
 
   imageConfig: ImageConfig;
+  share = false;
+  isVisible: boolean;
+  https = 'https://infographic.dev';
 
   constructor() { }
 
@@ -20,6 +24,15 @@ export class CardComponent implements OnInit {
       height: '260',
       hasCount: true
     };
+  }
+
+  openDetail(): void {
+    console.log('xxxx');
+    this.open.emit(true);
+  }
+
+  visibleChange(isVisible: boolean): void {
+    this.isVisible = isVisible;
   }
 
 }

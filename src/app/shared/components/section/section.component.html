@@ -3,13 +3,11 @@
     <h1>{{ tag.key }}</h1>
     <div class="section-images">
       <div *ngFor="let item of tag.value">
-        <a (click)="openDetail(item, infographicNavigation)">
-          <!--aplicar output-->
-          <app-card 
-            [data]="item?.images[0]?.url"
-            [value]="item"
-          ></app-card>
-        </a>
+        <app-card 
+          [data]="item?.images[0]?.url"
+          [value]="item"
+          (open)="openDetail($event, item, infographicNavigation)"
+        ></app-card>
       </div>
     </div>
   </ng-container>

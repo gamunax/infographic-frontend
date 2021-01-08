@@ -29,8 +29,8 @@ export class SectionComponent implements OnInit, OnDestroy {
     this.infographics = undefined;
   }
 
-  openDetail({ id, url }: Infographic, infographicNavigation: NavigationType): void {
-    this.isOpenDetail = true;
+  openDetail(isOpen, { id, url }: Infographic, infographicNavigation: NavigationType): void {
+    this.isOpenDetail = isOpen;
     this.infographicId = id;
     console.log(infographicNavigation);
     if (document.getElementById('infographic-detail')) {
