@@ -21,7 +21,7 @@
       [nzPlacement]="'topRight'"
       (nzVisibleChange)="visibleChange($event)"
       class="info-card__shared"
-      (click)="share = !share"
+      (click)="share()"
       [ngClass]="{ 'info-card__shared--background': isVisible }"
     >
       <svg
@@ -51,8 +51,13 @@
             [show]="4"
             [size]="-4"
             [url]="https + '/' + value?.id + '/' + value?.url"
-          ></share-buttons>
-          <!-- https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F 7GDvE2m -->
+            [title]="value?.title"
+            [description]="value?.title"
+            [image]="API_IMAGES + data"
+            (opened)="openShare($event)"
+            ></share-buttons>
+            <!-- [image]="API_IMAGES + data" -->
+            <!-- https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F 7GDvE2m -->
           <!-- <a
             href="https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F{{
               value?.id

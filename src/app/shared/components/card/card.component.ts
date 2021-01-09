@@ -2,8 +2,10 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { ImageConfig } from '../../models/image';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
+import { environment } from 'src/environments/environment';
+import { ShareService } from '../../services/share.service';
 
 @Component({
   selector: 'app-card',
@@ -18,23 +20,25 @@ export class CardComponent implements OnInit {
   @Output() open = new EventEmitter();
 
   imageConfig: ImageConfig;
-  share = false;
+  isShare = false;
   isVisible: boolean;
   https = 'https://infographic.dev';
+  readonly API_IMAGES = environment.apiImages;
 
   constructor(
     private message: NzMessageService,
     private title: Title,
-    private platformBrowserService: PlatformBrowserService
+    private platformBrowserService: PlatformBrowserService,
+    private shareService: ShareService
   ) { }
 
   ngOnInit(): void {
-    // this.title.setTitle(`'Developer and Design Infographic - ${this.value?.title}`)
     this.imageConfig = {
       width: '260',
       height: '260',
       hasCount: true
     };
+
   }
 
   openDetail(): void {
@@ -60,6 +64,23 @@ export class CardComponent implements OnInit {
     this.message.success('Link copied', {
       nzDuration: 1500
     });
+  }
+
+  openShare(isOpen): void {
+    console.log('xxxxxxxxxx');
+    console.log(isOpen);
+  }
+
+  share(): void {
+    this.title.setTitle(`Developer and Design Infographic - ${this.value?.title}`)
+    this.shareService.setGraph(
+      this.https + '/' + this.value?.id + '/' + this.value?.url,
+      this.value?.title,
+      this.value?.title,
+      this.API_IMAGES + this.value?.url,
+      this.https
+    );
+    this.isShare = !this.isShare;
   }
 
 }
