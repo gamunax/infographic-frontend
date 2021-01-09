@@ -10,6 +10,8 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDropDownModule  } from 'ng-zorro-antd/dropdown';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -51,7 +53,10 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzInputModule,
     NzDropDownModule,
     NzMessageModule,
-    NzIconModule.forRoot(icons)
+    ShareIconsModule,
+    ShareButtonsModule,
+    NzIconModule.forRoot(icons),
+    
   ],
   exports: [
     HeaderComponent,

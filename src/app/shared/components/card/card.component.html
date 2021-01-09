@@ -12,15 +12,18 @@
   </a>
   <div class="info-card__options">
     <div class="info-card__views">74 vistas</div>
-    <button nz-button
+    <button
+      nz-button
       nzTrigger="click"
       nz-dropdown
       [nzDropdownMenu]="menu"
       [nzClickHide]="false"
       [nzPlacement]="'topRight'"
       (nzVisibleChange)="visibleChange($event)"
-      class="info-card__shared" (click)="share = !share"
-      [ngClass]="{'info-card__shared--background': isVisible}">
+      class="info-card__shared"
+      (click)="share = !share"
+      [ngClass]="{ 'info-card__shared--background': isVisible }"
+    >
       <svg
         width="16"
         height="16"
@@ -39,27 +42,44 @@
       <label for="" class="ml-2 mb-0">Share</label>
     </button>
     <nz-dropdown-menu #menu="nzDropdownMenu">
-      <div nz-menu
-        class="share-modal">
+      <div nz-menu class="share-modal">
         <div class="share-modal__title">Share this infographic</div>
         <div class="share-modal__social-network d-flex align-items-center justify-content-between">
+          <share-buttons
+            [theme]="'circles-dark'"
+            [include]="['facebook', 'twitter', 'linkedin', 'whatsapp']"
+            [show]="4"
+            [size]="-4"
+            [url]="https + '/' + value?.id + '/' + value?.url"
+            [title]="'s'"
+            [description]="'s'"
+            [image]="'s'"
+            [tags]="'ss'"
+            [autoSetMeta]="false"
+          ></share-buttons>
           <!-- https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F 7GDvE2m -->
-          <a href="https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F{{value?.id}}%2F{{value?.url}}"
+          <!-- <a
+            href="https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F{{
+              value?.id
+            }}%2F{{ value?.url }}"
             target="_blank"
-            rel="noopener noreferrer">
-            <img src="./assets/icons/whatsapp.svg" alt="">
+            rel="noopener noreferrer"
+          >
+            <img src="./assets/icons/whatsapp.svg" alt="" />
           </a>
-          <img src="./assets/icons/facebook.svg" alt="">
-          <img src="./assets/icons/twitter.svg" alt="">
+          <img src="./assets/icons/facebook.svg" alt="" />
+          <img src="./assets/icons/twitter.svg" alt="" /> -->
         </div>
         <div class="share-copy-link">
           <div class="share-copy-link__text pb-2">or copy link</div>
-          <input #inputCopy 
-            [value]="https+'/'+value?.id+'/'+value?.url"
+          <input
+            #inputCopy
+            [value]="https + '/' + value?.id + '/' + value?.url"
             (focus)="focus($event.target)"
-            readonly>
-          <a (click)="copy(https+'/'+value?.id+'/'+value?.url)">
-            <img src="./assets/icons/copy.svg">
+            readonly
+          />
+          <a (click)="copy(https + '/' + value?.id + '/' + value?.url)">
+            <img src="./assets/icons/copy.svg" />
           </a>
         </div>
       </div>
