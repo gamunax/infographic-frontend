@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Infographic } from '../../models/infographic';
 import { NavigationType, InfographicNavigation } from '../../constants/close-navigation.constant';
+import { PlatformBrowserService } from '../../services/platform-browser.service';
 
 @Component({
   selector: 'app-section',
@@ -19,7 +20,8 @@ export class SectionComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private location: Location
+    private location: Location,
+    private platformBrowserService: PlatformBrowserService
   ) { }
 
   ngOnInit(): void {
@@ -29,27 +31,29 @@ export class SectionComponent implements OnInit, OnDestroy {
     this.infographics = undefined;
   }
 
-  openDetail(isOpen, { id, url }: Infographic, infographicNavigation: NavigationType): void {
+  openDetail(isOpen: boolean, { id, url }: Infographic, infographicNavigation: NavigationType): void {
     this.isOpenDetail = isOpen;
     this.infographicId = id;
-    console.log(infographicNavigation);
-    if (document.getElementById('infographic-detail')) {
-      document.getElementById('infographic-detail').style.width = '100%';
+    
+    if (this.platformBrowserService.isBrowser) {
+      if (document.getElementById('infographic-detail')) {
+        document.getElementById('infographic-detail').style.width = '100%';
+      }
     }
     if (infographicNavigation === NavigationType.PAGE) {
       this.router.navigate([`/${id}/${url}`]);
     } else {
-      this.location.go(`/${id}/${url}`);
+      if (this.platformBrowserService.isBrowser) {
+        this.location.go(`/${id}/${url}`);
+      }
     }
   }
 
   handleOk(): void {
-    console.log('Button ok clicked!');
     this.isOpenDetail = false;
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.resetData();
     this.isOpenDetail = false;
   }

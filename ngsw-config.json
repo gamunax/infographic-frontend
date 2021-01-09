@@ -25,6 +25,16 @@
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
+    },
+    {
+      "name": "s3",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "https://infografia-api.s3.us-east-2.amazonaws.com/**"
+        ]
+      }
     }
   ]
 }

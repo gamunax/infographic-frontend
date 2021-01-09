@@ -2,9 +2,11 @@
   <h1>{{infographicSection?.length}} resultados encontrados para <span>{{searchTag}}</span></h1>
   <div class="section-images">
     <div *ngFor="let item of infographicSection">
-      <a (click)="openDetail(item, infographicNavigation.OVERLAY)">
-        <app-card [data]="item?.images[0]?.url" [value]="item"></app-card>
-      </a>
+      <app-card
+        [data]="item?.images[0]?.url"
+        [value]="item"
+        (open)="openDetail($event, item, infographicNavigation.OVERLAY)">
+      </app-card>
     </div>
   </div>
 </main>

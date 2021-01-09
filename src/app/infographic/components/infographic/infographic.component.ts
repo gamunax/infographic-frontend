@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { InfographicFacade } from '../../../core/facades/infographic.facade';
 import { InfographicNavigation } from '../../../shared/constants/close-navigation.constant';
 import { Infographic, InfographicTags } from '../../../shared/models/infographic';
@@ -16,10 +17,12 @@ export class InfographicComponent implements OnInit {
   infographicSection;
 
   constructor(
-    private infograficFacade: InfographicFacade
+    private infograficFacade: InfographicFacade,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Developer and Design Infographic - All infographics')
     this.loadInfographics();
   }
 

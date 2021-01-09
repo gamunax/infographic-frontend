@@ -1,8 +1,8 @@
 {
-  "name": "infographic-frontend",
-  "short_name": "infographic-frontend",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "infographic dev",
+  "short_name": "infographic dev",
+  "theme_color": "##FF2981",
+  "background_color": "#021C69",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

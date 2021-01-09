@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
 import { Infographic } from 'src/app/shared/models/infographic';
+import { PlatformBrowserService } from 'src/app/shared/services/platform-browser.service';
 
 @Component({
   selector: 'app-infographic-tag',
@@ -22,11 +23,11 @@ export class InfographicTagComponent implements OnInit {
     private infograficFacade: InfographicFacade,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private platformBrowserService: PlatformBrowserService
   ) {
     this.route.params.subscribe(({ tag }) => {
       this.searchTag = tag;
-      console.log(tag);
       this.infographicSection = [];
       this.loadInfographics();
     });
@@ -46,20 +47,23 @@ export class InfographicTagComponent implements OnInit {
           // mensaje que no existe registros
           this.infographicSection = [];
         }
-        console.log(this.infographicSection);
       });
   }
 
-  openDetail({ id, url }: Infographic, infographicNavigation: NavigationType): void {
-    this.isOpenDetail = true;
+  openDetail(isOpen: boolean, { id, url }: Infographic, infographicNavigation: NavigationType): void {
+    this.isOpenDetail = isOpen;
     this.infographicId = id;
-    if (document.getElementById('infographic-detail')) {
-      document.getElementById('infographic-detail').style.width = '100%';
+    if (this.platformBrowserService.isBrowser) {
+      if (document.getElementById('infographic-detail')) {
+        document.getElementById('infographic-detail').style.width = '100%';
+      }
     }
     if (infographicNavigation === NavigationType.PAGE) {
       this.router.navigate([`/${id}/${url}`]);
     } else {
-      this.location.go(`/${id}/${url}`);
+      if (this.platformBrowserService.isBrowser) {
+        this.location.go(`/${id}/${url}`);
+      }
     }
   }
 

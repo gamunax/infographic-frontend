@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { ImageConfig } from '../../models/image';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Title } from '@angular/platform-browser';
+import { PlatformBrowserService } from '../../services/platform-browser.service';
 
 @Component({
   selector: 'app-card',
@@ -21,10 +23,13 @@ export class CardComponent implements OnInit {
   https = 'https://infographic.dev';
 
   constructor(
-    private message: NzMessageService
+    private message: NzMessageService,
+    private title: Title,
+    private platformBrowserService: PlatformBrowserService
   ) { }
 
   ngOnInit(): void {
+    // this.title.setTitle(`'Developer and Design Infographic - ${this.value?.title}`)
     this.imageConfig = {
       width: '260',
       height: '260',
@@ -33,7 +38,6 @@ export class CardComponent implements OnInit {
   }
 
   openDetail(): void {
-    console.log('xxxx');
     this.open.emit(true);
   }
 
@@ -42,16 +46,16 @@ export class CardComponent implements OnInit {
   }
 
   focus(target): void {
-    console.log(target);
     target.select();
     target.setSelectionRange(0, 99999);
   }
 
   copy(url: string): void {
-    console.log(this.inputCopy);
     this.inputCopy.nativeElement.select();
     this.inputCopy.nativeElement.setSelectionRange(0, 99999);
-    document.execCommand('copy');
+    if (this.platformBrowserService.isBrowser) {
+      document.execCommand('copy');
+    }
     // this.message.create('success', `This is a message of`);
     this.message.success('Link copied', {
       nzDuration: 1500

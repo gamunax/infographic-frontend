@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
 import { Infographic } from 'src/app/shared/models/infographic';
+import { PlatformBrowserService } from '../../services/platform-browser.service';
 
 @Component({
   selector: 'app-overlay-navigation',
@@ -24,7 +25,8 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private infographicFacade: InfographicFacade
+    private infographicFacade: InfographicFacade,
+    private platformBrowserService: PlatformBrowserService
   ) {
     this.route.params.subscribe(({id}) => {
       this.infographicId = id;
@@ -35,7 +37,9 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnChanges(): void {
-    document.getElementById('infographic-detail').style.display = 'block';
+    if (this.platformBrowserService.isBrowser) {
+      document.getElementById('infographic-detail').style.display = 'block';
+    }
     this.infographicFacade.getInfographicById(this.infographicId || this.id)
       .subscribe(res => {
         this.infographic = JSON.parse(JSON.stringify(res));
@@ -47,7 +51,9 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
     if (infographicNavigation === InfographicNavigation.PAGE) {
       this.router.navigate(['/']);
     } else {
-      document.getElementById('infographic-detail').style.display = 'none';
+      if (this.platformBrowserService.isBrowser) {
+        document.getElementById('infographic-detail').style.display = 'none';
+      }
       this.location.go(`/`);
       this.infographic = null;
     }
