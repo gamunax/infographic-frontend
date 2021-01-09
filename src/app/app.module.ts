@@ -26,7 +26,7 @@ const analyticsModules = environment.analytics.status ? [
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,

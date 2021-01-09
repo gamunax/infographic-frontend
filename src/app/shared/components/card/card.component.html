@@ -43,8 +43,12 @@
         class="share-modal">
         <div class="share-modal__title">Share this infographic</div>
         <div class="share-modal__social-network d-flex align-items-center justify-content-between">
-          <img src="./assets/icons/whatsapp.svg" alt="">
-          <img src="./assets/icons/mail.svg" alt="">
+          <!-- https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F 7GDvE2m -->
+          <a href="https://web.whatsapp.com/send?text=Look%20at%20this%20infographic%20https%3A%2F%2Finfographic.dev%2F{{value?.id}}%2F{{value?.url}}"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img src="./assets/icons/whatsapp.svg" alt="">
+          </a>
           <img src="./assets/icons/facebook.svg" alt="">
           <img src="./assets/icons/twitter.svg" alt="">
         </div>
