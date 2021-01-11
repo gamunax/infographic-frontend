@@ -34,7 +34,7 @@ const analyticsModules = environment.analytics.status ? [
     SlickCarouselModule,
     NzModalModule,
     ...analyticsModules,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false })
   ],
   providers: [],
   bootstrap: [AppComponent]
