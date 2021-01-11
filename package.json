@@ -40,6 +40,7 @@
     "ngx-google-analytics": "^11.0.0",
     "ngx-sharebuttons": "^8.0.5",
     "ngx-slick-carousel": "^0.5.1",
+    "preboot": "^7.0.0",
     "rxjs": "~6.6.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.0.0",
