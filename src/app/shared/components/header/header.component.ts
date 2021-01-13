@@ -21,17 +21,17 @@ export class HeaderComponent implements OnInit {
     this.getTag();
   }
 
-  getTag() {
+  getTag(): void {
     this.tagFacade.getTags().subscribe(tags => this.tags = tags)
   }
 
-  search(value: string) {
+  search(value: string): void {
     if (value) {
       this.router.navigate([`/search/${value}`]);
     }
   }
 
-  clear(isClear: boolean) {
+  clear(isClear: boolean): void {
     console.log(isClear);
     this.router.navigate(['/']);
   }

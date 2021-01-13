@@ -44,9 +44,9 @@ export class AutocompleteComponent implements OnInit {
   }
 
   inputClear(): void {
-    this.inputValue = null; 
+    this.inputValue = null;
     this.filteredOptions = this.options;
-    this.clear.emit(true)
+    this.clear.emit(true);
   }
 }
 

@@ -27,7 +27,7 @@ export class CardComponent implements OnInit {
   readonly API_IMAGES = environment.apiImages;
   configuration: CardConfiguration = {
     background: '#151D2F',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     marginLeftButton: 0
   };
 

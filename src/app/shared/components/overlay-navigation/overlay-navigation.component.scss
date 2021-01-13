@@ -19,11 +19,12 @@
 
 .infographic-detail {
   &__close {
+    cursor: pointer;
+    padding: 10px;
     position: absolute;
     top: 18px;
     right: 20px;
     z-index: 1000;
-    cursor: pointer;
   }
 }
 
@@ -49,8 +50,12 @@
   }
 
   @include mobile {
-    padding: 0 30px;
+    padding: 0 30px 10px;
     margin-top: 20px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0 30px;
   }
 }
 

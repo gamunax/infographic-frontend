@@ -1,6 +1,9 @@
 <section *ngFor="let infographic of data">
   <ng-container *ngFor="let tag of infographic | keyvalue">
-    <h1>{{ tag.key }}</h1>
+    <div class="d-flex align-items-baseline">
+      <h1>{{ tag.key }}</h1>
+      <a [routerLink]="['/search', tag?.key]" class="all-view">VER TODO</a>
+    </div>
     <div class="section-images">
       <div *ngFor="let item of tag.value">
         <app-card 

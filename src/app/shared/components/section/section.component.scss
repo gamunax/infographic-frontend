@@ -55,3 +55,19 @@ section {
     grid-template-columns: repeat(4, 260px);
   }
 }
+
+.all-view {
+  color: #8292AE;
+  font-size: 12px;
+  line-height: 15px;
+  margin-left: 60px;
+  text-decoration: underline;
+
+  @media (max-width: 360px) {
+    margin-left: 170px;
+  }
+
+  @media (max-width: 320px) {
+    margin-left: 130px;
+  }
+}

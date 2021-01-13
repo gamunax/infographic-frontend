@@ -18,8 +18,17 @@
     background-color: $background-color-default;
     align-items: center;
     display: flex;
-    justify-content: space-between;
-    padding: 10px 20px 20px;
+    justify-content: flex-start;
+    padding: 10px 20px 20px 0;
+
+    @include tablet {
+      padding: 10px 152px;
+    }
+
+    @include mobile {
+      padding: 10px 20px 20px;
+      justify-content: flex-end;
+    }
   }
 
   &__views {

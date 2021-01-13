@@ -28,13 +28,13 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   configuration: CardConfiguration = {
     background: '#0D1524',
     justifyContent: 'flex-end',
-    marginLeftButton: 36
+    marginLeftButton: 0
   };
 
   configurationDesktop: CardConfiguration = {
     background: '#0D1524',
     justifyContent: 'flex-start',
-    marginLeftButton: 36
+    marginLeftButton: 0
   };
 
   private unsubscribe = new Subject<void>();
