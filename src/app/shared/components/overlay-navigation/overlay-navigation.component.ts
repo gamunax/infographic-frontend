@@ -7,6 +7,8 @@ import { Infographic } from 'src/app/shared/models/infographic';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { CardConfiguration } from '../../models/card-configuration.model';
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-overlay-navigation',
@@ -35,6 +37,8 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
     marginLeftButton: 36
   };
 
+  private unsubscribe = new Subject<void>();
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -49,6 +53,16 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnInit(): void {
+    fromEvent(window, 'popstate')
+    .pipe(takeUntil(this.unsubscribe))
+    .subscribe((e) => {
+      if (this.platformBrowserService.isBrowser) {
+        document.getElementById('infographic-detail').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        this.closeModal.emit(true);
+        this.infographic = null;
+      }
+    });
   }
 
   ngOnChanges(): void {
@@ -86,6 +100,8 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
 
   ngOnDestroy(): void {
     this.infographic = null;
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 }
