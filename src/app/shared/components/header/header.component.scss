@@ -1,10 +1,10 @@
-@import '../../../../scss/mixins';
+@import "../../../../scss/mixins";
 
-nav {
+.nav-header {
   background: radial-gradient(100% 100% at 0% 0%, rgba(255, 41, 129, 0.2) 0%, rgba(255, 41, 129, 0) 100%);
   padding: 0 20px;
   & a {
-    padding: 50px 0 36px;
+    padding: 40px 0 36px;
     margin-right: 0;
 
     @include tablet-large {
@@ -22,9 +22,9 @@ nav {
   padding: 0 20px 30px;
 
   input {
-    color: #67758E;
+    color: #67758e;
     border: 1px solid rgba(103, 117, 142, 0.5);
-    background-color: #151D2F;
+    background-color: #151d2f;
     border-radius: 8px;
     font-size: 16px;
     height: 44px;
@@ -41,5 +41,26 @@ nav {
 
   @include desktop {
     width: 335px;
+  }
+}
+
+.nav-skeleton {
+  background-color: #ffffff;
+  padding: 0 20px;
+
+  &__content-logo {
+    padding: 40px 0 36px;
+  }
+
+  &__logo {
+    width: 174px;
+  }  
+}
+
+.autocomplete-skeleton {
+  width: 335px;
+
+  @include mobile {
+    width: 24px;
   }
 }

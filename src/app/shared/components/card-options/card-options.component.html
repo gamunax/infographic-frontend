@@ -1,6 +1,8 @@
 <div class="info-card">
   <div class="info-card__options"
-    [style.background]="configuration?.background">
+    [ngClass]="{'principal': configuration?.isPrincipal}"
+    [style.background]="configuration?.background"
+    [style.justifyContent]="configuration?.isPrincipal && 'flex-end'">
     <!-- <div class="info-card__views">74 vistas</div> -->
     <button
       nz-button

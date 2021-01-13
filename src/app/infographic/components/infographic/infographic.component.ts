@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { InfographicFacade } from '../../../core/facades/infographic.facade';
 import { InfographicNavigation } from '../../../shared/constants/close-navigation.constant';
 import { Infographic, InfographicTags } from '../../../shared/models/infographic';
@@ -13,11 +14,16 @@ export class InfographicComponent implements OnInit {
   infographics: Infographic[];
   tags: InfographicTags[];
   infographicNavigation = InfographicNavigation;
-
   infographicSection;
+  isLoading = true;
+
+  skeletonSection = Array(2);
+  skeletonData = Array(10);
+  skeletonTag = Array(1);
 
   constructor(
     private infograficFacade: InfographicFacade,
+    private loadingService: LoadingService,
     private title: Title
   ) { }
 
@@ -29,8 +35,9 @@ export class InfographicComponent implements OnInit {
   loadInfographics(): void {
     this.infograficFacade.getSectionByTag()
       .subscribe(res => {
+        this.isLoading = false;
         this.infographicSection = res;
-        console.log(res);
+        this.loadingService.isLoading.next(false);
       });
   }
 

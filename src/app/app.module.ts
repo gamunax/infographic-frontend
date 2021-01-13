@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -36,6 +37,7 @@ const analyticsModules = environment.analytics.status ? [
     HttpClientModule,
     SlickCarouselModule,
     NzModalModule,
+    NzSkeletonModule,
     ...analyticsModules,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

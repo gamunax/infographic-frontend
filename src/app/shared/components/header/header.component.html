@@ -1,24 +1,48 @@
-<nav>
-  <div class="d-flex justify-content-between align-items-center">
-    <a class="navbar-brand" href="#">
-      <img src="./assets/logo/logo.svg">
-    </a>
-    <button class="btn-image d-block d-md-none" (click)="isSearch = true">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="#8292AE" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M22.0001 22L15.6001 15.6" stroke="#8292AE" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<ng-container *ngIf="!isLoading; else skeletonNav">
+  <nav class="nav-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo/logo.svg" />
+      </a>
+      <button class="btn-image d-block d-md-none" (click)="isSearch = true">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
+            stroke="#8292AE"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22.0001 22L15.6001 15.6"
+            stroke="#8292AE"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
-    </button>
+      </button>
 
-    <div class="search-header search d-none d-md-block">
-      <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
+      <div class="search-header search d-none d-md-block">
+        <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</ng-container>
 
-<div *ngIf="isSearch" class="search d-block d-md-none">
-  <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
-</div>
+<ng-container *ngIf="!isLoading">
+  <div *ngIf="isSearch" class="search d-block d-md-none">
+    <ng-container *ngTemplateOutlet="autocomplete"></ng-container>
+  </div>
+</ng-container>
 
 <ng-template #autocomplete>
   <app-autocomplete
@@ -26,4 +50,28 @@
     (search)="search($event)"
     (clear)="clear($event)"
   ></app-autocomplete>
+</ng-template>
+
+<ng-template #skeletonNav>
+  <nav class="nav-skeleton">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="nav-skeleton__content-logo">
+        <nz-skeleton-element
+          [nzActive]="true"
+          nzType="input"
+          nzSize="large"
+          class="nav-skeleton__logo"
+        >
+        </nz-skeleton-element>
+      </div>
+      <div>
+        <nz-skeleton-element
+          [nzActive]="true"
+          nzType="input"
+          nzSize="large"
+          class="autocomplete-skeleton"
+        ></nz-skeleton-element>
+      </div>
+    </div>
+  </nav>
 </ng-template>

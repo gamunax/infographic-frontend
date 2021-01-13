@@ -10,6 +10,12 @@
   }
 }
 
+@mixin tablet-landscape {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin tablet-large {
   @media only screen and (max-width: 1200px) {
     @content;

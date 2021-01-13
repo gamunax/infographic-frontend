@@ -9,6 +9,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDropDownModule  } from 'ng-zorro-antd/dropdown';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
@@ -27,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { OverlayNavigationComponent } from './components/overlay-navigation/overlay-navigation.component';
 import { CardOptionsComponent } from './components/card-options/card-options.component';
+import { LazyImgDirective } from './directives/lazy-img.directive';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
@@ -41,7 +43,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     FooterComponent,
     AutocompleteComponent,
     OverlayNavigationComponent,
-    CardOptionsComponent
+    CardOptionsComponent,
+    LazyImgDirective
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzMessageModule,
     ShareIconsModule,
     ShareButtonsModule,
+    NzSkeletonModule,
     NzIconModule.forRoot(icons)
   ],
   exports: [

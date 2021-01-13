@@ -28,7 +28,8 @@ export class CardComponent implements OnInit {
   configuration: CardConfiguration = {
     background: '#151D2F',
     justifyContent: 'flex-end',
-    marginLeftButton: 0
+    marginLeftButton: 0,
+    isPrincipal: true
   };
 
   constructor(
@@ -44,7 +45,6 @@ export class CardComponent implements OnInit {
       height: '260',
       hasCount: true
     };
-
   }
 
   openDetail(): void {
@@ -66,15 +66,12 @@ export class CardComponent implements OnInit {
     if (this.platformBrowserService.isBrowser) {
       document.execCommand('copy');
     }
-    // this.message.create('success', `This is a message of`);
     this.message.success('Link copied', {
       nzDuration: 1500
     });
   }
 
   openShare(isOpen): void {
-    console.log('xxxxxxxxxx');
-    console.log(isOpen);
   }
 
   share(): void {

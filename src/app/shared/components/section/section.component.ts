@@ -17,12 +17,14 @@ export class SectionComponent implements OnInit, OnDestroy {
   infographics: Infographic;
   isOpenDetail = false;
   infographicId: string;
+  isLoading: boolean;
 
   constructor(
     private router: Router,
     private location: Location,
     private platformBrowserService: PlatformBrowserService
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
   }

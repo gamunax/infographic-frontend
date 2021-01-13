@@ -28,7 +28,8 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   configuration: CardConfiguration = {
     background: '#0D1524',
     justifyContent: 'flex-end',
-    marginLeftButton: 0
+    marginLeftButton: 0,
+    isPrincipal: false
   };
 
   configurationDesktop: CardConfiguration = {

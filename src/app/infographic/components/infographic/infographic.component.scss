@@ -1,3 +1,55 @@
+@import "../../../../scss/mixins";
+
 .container-fluid {
   padding-left: 20px;
+}
+
+.skeleton {
+  background-color: #ffffff;
+
+  & .tag-container {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+
+    @include mobile {
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    & .tag {
+    }
+  }
+
+}
+
+.view-all {
+  margin-left: 60px;
+
+  @media (max-width: 360px) {
+    margin-left: 0;
+  }
+
+  @media (max-width: 320px) {
+    margin-left: 0;
+  }
+}
+
+.section-images {
+  display: flex;
+
+  &__card {
+    padding: 20px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+}
+
+#card ::ng-deep span {
+  width: 260px;
+  height: 372px;
 }

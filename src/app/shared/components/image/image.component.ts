@@ -23,8 +23,7 @@ export class ImageComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  ngOnChanges() {
-    console.log(this.dataSource);
+  ngOnChanges(): void {
   }
 
 }

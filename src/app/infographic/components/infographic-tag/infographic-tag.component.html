@@ -1,6 +1,6 @@
 <main class="container-fluid">
   <h1>{{infographicSection?.length}} resultados encontrados para <span>{{searchTag}}</span></h1>
-  <div class="section-images">
+  <div class="section-images" *ngIf="!loading; else loadingResult">
     <div *ngFor="let item of infographicSection">
       <app-card
         [data]="item?.images[0]?.url"
@@ -19,3 +19,9 @@
   >
   </app-overlay-navigation>
 </ng-container>
+
+<ng-template #loadingResult>
+  <div class="d-flex justify-content-center pt-5">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+</ng-template>

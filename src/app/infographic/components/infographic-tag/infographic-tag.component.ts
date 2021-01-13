@@ -7,6 +7,7 @@ import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/
 import { Infographic } from 'src/app/shared/models/infographic';
 import { PlatformBrowserService } from 'src/app/shared/services/platform-browser.service';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 @Component({
   selector: 'app-infographic-tag',
@@ -19,6 +20,7 @@ export class InfographicTagComponent implements OnInit {
   infographicNavigation = InfographicNavigation;
   isOpenDetail = false;
   infographicId: string;
+  loading = true;
 
   constructor(
     private infograficFacade: InfographicFacade,
@@ -26,9 +28,12 @@ export class InfographicTagComponent implements OnInit {
     private router: Router,
     private location: Location,
     private platformBrowserService: PlatformBrowserService,
-    protected $gaService: GoogleAnalyticsService
+    protected $gaService: GoogleAnalyticsService,
+    private loadingService: LoadingService
   ) {
+    this.loadingService.isLoading.next(false);
     this.route.params.subscribe(({ tag }) => {
+      this.loading = true;
       this.searchTag = tag;
       this.infographicSection = [];
       this.loadInfographics();
@@ -53,6 +58,7 @@ export class InfographicTagComponent implements OnInit {
           // mensaje que no existe registros
           this.infographicSection = [];
         }
+        this.loading = false;
       });
   }
 
