@@ -27,24 +27,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getTag();
-    this.loadingSkeleton();
+    // this.loadingSkeleton();
   }
 
   getTag(): void {
     this.tagFacade.getTags().subscribe(tags => this.tags = tags);
   }
 
-  loadingSkeleton(): void {
-    console.log(this.isLoading);
-    this.loadingService.isLoading
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(loading => {
-        this.isLoading = loading;
-        if (this.platformBrowserService.isBrowser) {
-          document.body.style.background = '#0D1524';
-        }
-      });
-  }
+  // loadingSkeleton(): void {
+  //   console.log(this.isLoading);
+  //   this.loadingService.isLoading
+  //     .pipe(takeUntil(this.unsubscribe))
+  //     .subscribe(loading => {
+  //       this.isLoading = loading;
+  //       if (this.platformBrowserService.isBrowser) {
+  //         document.body.style.background = '#0D1524';
+  //       }
+  //     });
+  // }
 
   search(value: string): void {
     if (value) {

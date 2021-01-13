@@ -1,13 +1,14 @@
-<main class="container-fluid" [ngClass]="{ skeleton: isLoading }">
-  <ng-container *ngIf="!isLoading; else skeleton">
+<main class="container-fluid">
+  <!-- [ngClass]="{ skeleton: isLoading } -->
+  <!-- <ng-container *ngIf="!isLoading; else skeleton"> -->
     <app-section
       [data]="infographicSection"
       [infographicNavigation]="infographicNavigation.OVERLAY"
     >
     </app-section>
-  </ng-container>
+  <!-- </ng-container> -->
 
-  <ng-template #skeleton>
+  <!-- <ng-template #skeleton>
     <section *ngFor="let infographic of skeletonSection">
       <ng-container *ngFor="let tag of skeletonTag">
         <div class="tag-container">
@@ -43,5 +44,5 @@
         </div>
       </ng-container>
     </section>
-  </ng-template>
+  </ng-template> -->
 </main>
