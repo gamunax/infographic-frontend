@@ -1,58 +1,44 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ImageConfig } from '../../models/image';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { Meta, Title } from '@angular/platform-browser';
+import { ShareService } from '../../services/share.service';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
 import { environment } from 'src/environments/environment';
-import { ShareService } from '../../services/share.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { CardConfiguration } from '../../models/card-configuration.model';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'app-card-options',
+  templateUrl: './card-options.component.html',
+  styleUrls: ['./card-options.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardOptionsComponent implements OnInit {
   @ViewChild('inputCopy') inputCopy: ElementRef;
-
   @Input() data;
   @Input() value;
-  @Output() open = new EventEmitter();
+  @Input() configuration: CardConfiguration;
 
-  imageConfig: ImageConfig;
-  isShare = false;
   isVisible: boolean;
   https = 'https://infographic.dev';
   readonly API_IMAGES = environment.apiImages;
-  configuration: CardConfiguration = {
-    background: '#151D2F',
-    justifyContent: 'space-between',
-    marginLeftButton: 0
-  };
+  isShare = false;
+
 
   constructor(
     private message: NzMessageService,
     private title: Title,
-    private platformBrowserService: PlatformBrowserService,
-    private shareService: ShareService
+    private shareService: ShareService,
+    private platformBrowserService: PlatformBrowserService
   ) { }
 
   ngOnInit(): void {
-    this.imageConfig = {
-      width: '260',
-      height: '260',
-      hasCount: true
-    };
-
-  }
-
-  openDetail(): void {
-    this.open.emit(true);
   }
 
   visibleChange(isVisible: boolean): void {
     this.isVisible = isVisible;
+  }
+
+  openShare(isOpen): void {
   }
 
   focus(target): void {
@@ -70,11 +56,6 @@ export class CardComponent implements OnInit {
     this.message.success('Link copied', {
       nzDuration: 1500
     });
-  }
-
-  openShare(isOpen): void {
-    console.log('xxxxxxxxxx');
-    console.log(isOpen);
   }
 
   share(): void {

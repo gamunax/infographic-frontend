@@ -1,16 +1,6 @@
 @import "../../../../scss/abstracts/colors/colors.scss";
 @import "../../../../scss/mixins";
 
-.infographic-detail {
-  &__close {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    z-index: 1000;
-    cursor: pointer;
-  }
-}
-
 /* The Overlay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */
@@ -27,14 +17,26 @@
   transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
 
+.infographic-detail {
+  &__close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+}
+
+
 /* Position the content inside the overlay */
 .overlay-content {
   position: relative;
   top: 0; /* 60px from the top */
   width: 100%; /* 100% width */
   text-align: center; /* Centered text/links */
-  margin-top: 60px; /* 20px top margin to avoid conflict with the close button on smaller screens */
+  margin-top: 90px; /* 20px top margin to avoid conflict with the close button on smaller screens */
   padding: 0 132px;
+
 
   @include tablet-large {
     padding: 0 132px;

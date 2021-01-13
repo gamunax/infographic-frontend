@@ -44,7 +44,7 @@ export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
       {
         breakpoint: 2600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 1
         }
       },

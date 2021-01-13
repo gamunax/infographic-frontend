@@ -6,6 +6,7 @@ import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
 import { Infographic } from 'src/app/shared/models/infographic';
 import { PlatformBrowserService } from 'src/app/shared/services/platform-browser.service';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 @Component({
   selector: 'app-infographic-tag',
@@ -24,7 +25,8 @@ export class InfographicTagComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private platformBrowserService: PlatformBrowserService
+    private platformBrowserService: PlatformBrowserService,
+    protected $gaService: GoogleAnalyticsService
   ) {
     this.route.params.subscribe(({ tag }) => {
       this.searchTag = tag;
@@ -34,6 +36,10 @@ export class InfographicTagComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.$gaService.pageView(
+      this.searchTag,
+      `/search/${this.searchTag}`
+    );
     this.loadInfographics();
   }
 

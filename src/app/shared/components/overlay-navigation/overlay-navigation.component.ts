@@ -5,6 +5,8 @@ import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { InfographicNavigation, NavigationType } from 'src/app/shared/constants/close-navigation.constant';
 import { Infographic } from 'src/app/shared/models/infographic';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { CardConfiguration } from '../../models/card-configuration.model';
 
 @Component({
   selector: 'app-overlay-navigation',
@@ -20,15 +22,28 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
 
   infographicId: string;
   infographic: Infographic;
+  https = 'https://infographic.dev';
+  configuration: CardConfiguration = {
+    background: '#0D1524',
+    justifyContent: 'flex-end',
+    marginLeftButton: 36
+  };
+
+  configurationDesktop: CardConfiguration = {
+    background: '#0D1524',
+    justifyContent: 'flex-start',
+    marginLeftButton: 36
+  };
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
     private infographicFacade: InfographicFacade,
-    private platformBrowserService: PlatformBrowserService
+    private platformBrowserService: PlatformBrowserService,
+    protected $gaService: GoogleAnalyticsService
   ) {
-    this.route.params.subscribe(({id}) => {
+    this.route.params.subscribe(({ id }) => {
       this.infographicId = id;
     });
   }
@@ -39,14 +54,23 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
   ngOnChanges(): void {
     if (this.platformBrowserService.isBrowser) {
       document.getElementById('infographic-detail').style.display = 'block';
+      document.body.style.overflow = 'hidden';
     }
+
     this.infographicFacade.getInfographicById(this.infographicId || this.id)
       .subscribe(res => {
         this.infographic = JSON.parse(JSON.stringify(res));
+        this.$gaService.pageView(
+          this.infographic?.title,
+          `/${this.infographic?.url}`
+        );
       });
   }
 
   close(infographicNavigation: NavigationType): void {
+    if (this.platformBrowserService.isBrowser) {
+      document.body.style.overflow = 'auto';
+    }
     this.closeModal.emit(true);
     if (infographicNavigation === InfographicNavigation.PAGE) {
       this.router.navigate(['/']);

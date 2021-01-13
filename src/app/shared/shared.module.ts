@@ -26,6 +26,7 @@ import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { OverlayNavigationComponent } from './components/overlay-navigation/overlay-navigation.component';
+import { CardOptionsComponent } from './components/card-options/card-options.component';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
@@ -39,7 +40,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     CardComponent,
     FooterComponent,
     AutocompleteComponent,
-    OverlayNavigationComponent
+    OverlayNavigationComponent,
+    CardOptionsComponent
   ],
   imports: [
     CommonModule,
@@ -55,8 +57,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzMessageModule,
     ShareIconsModule,
     ShareButtonsModule,
-    NzIconModule.forRoot(icons),
-    
+    NzIconModule.forRoot(icons)
   ],
   exports: [
     HeaderComponent,
@@ -67,12 +68,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     CardComponent,
     FooterComponent,
     AutocompleteComponent,
-    OverlayNavigationComponent
-  ],
-  // providers: [
-  //   {
-  //     provide: NZ_ICONS, useValue: icons
-  //   }
-  // ]
+    OverlayNavigationComponent,
+    CardOptionsComponent
+  ]
 })
 export class SharedModule { }

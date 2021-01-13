@@ -1,15 +1,34 @@
 <div id="infographic-detail" class="overlay">
   <div class="infographic-detail__close" (click)="close(infographicNavigation)">
-    <i nz-icon nzType="close" style="color: #8292AE; font-size: 20px"></i>
+    <i nz-icon nzType="close" style="color: #8292ae; font-size: 20px"></i>
   </div>
   <div class="d-block d-lg-flex flex-lg-row-reverse">
     <div class="infographic-title col-lg-4">
-      <h1>{{infographic?.title}}</h1>
+      <h1 class="mb-lg-3">{{ infographic?.title }}</h1>
+      <div class="d-none d-sm-none d-lg-block">
+        <app-card-options
+          [data]="infographic?.url"
+          [value]="infographic"
+          [configuration]="configurationDesktop"
+        ></app-card-options>
+      </div>
+    </div>
+    <div class="d-none d-sm-block d-lg-none">
+      <ng-container *ngTemplateOutlet="share"></ng-container>
     </div>
     <div class="overlay-content col-lg-8">
-      <app-carousel
-        [data]="infographic">
-      </app-carousel>
+      <app-carousel [data]="infographic"> </app-carousel>
+    </div>
+    <div class="d-block d-sm-none">
+      <ng-container *ngTemplateOutlet="share"></ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #share>
+  <app-card-options
+    [data]="infographic?.url"
+    [value]="infographic"
+    [configuration]="configuration"
+  ></app-card-options>
+</ng-template>
