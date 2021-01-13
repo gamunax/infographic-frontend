@@ -1,12 +1,13 @@
 <main class="container-fluid">
   <!-- [ngClass]="{ skeleton: isLoading } -->
-  <!-- <ng-container *ngIf="!isLoading; else skeleton"> -->
+  <ng-container *ngIf="!isLoading; else loadingResult"> -->
+  
     <app-section
       [data]="infographicSection"
       [infographicNavigation]="infographicNavigation.OVERLAY"
     >
     </app-section>
-  <!-- </ng-container> -->
+  </ng-container>
 
   <!-- <ng-template #skeleton>
     <section *ngFor="let infographic of skeletonSection">
@@ -45,4 +46,9 @@
       </ng-container>
     </section>
   </ng-template> -->
+  <ng-template #loadingResult>
+    <div class="d-flex justify-content-center pt-5">
+      <nz-spin nzSimple></nz-spin>
+    </div>
+  </ng-template>
 </main>
