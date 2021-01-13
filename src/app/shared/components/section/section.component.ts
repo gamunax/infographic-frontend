@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Infographic } from '../../models/infographic';
-import { NavigationType, InfographicNavigation } from '../../constants/close-navigation.constant';
+import { NavigationType } from '../../constants/close-navigation.constant';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class SectionComponent implements OnInit, OnDestroy {
   openDetail(isOpen: boolean, { id, url }: Infographic, infographicNavigation: NavigationType): void {
     this.isOpenDetail = isOpen;
     this.infographicId = id;
-    
+
     if (this.platformBrowserService.isBrowser) {
       if (document.getElementById('infographic-detail')) {
         document.getElementById('infographic-detail').style.width = '100%';
