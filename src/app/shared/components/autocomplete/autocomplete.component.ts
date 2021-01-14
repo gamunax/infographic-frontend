@@ -16,7 +16,8 @@ export class AutocompleteComponent implements OnInit {
         .sort();
       this.filteredOptions = this.options;
     }
-  };
+  }
+
   @Output() search = new EventEmitter();
   @Output() clear = new EventEmitter();
 
@@ -31,15 +32,16 @@ export class AutocompleteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange(value: string): void {
+  onChange(value: string | any): void {
     this.filteredOptions = this.options
       .filter(option => option.toLowerCase().indexOf(value.toLowerCase()) !== -1);
 
     const existTag = this.options.some(option => option === value);
     if (existTag) {
-      this.search.emit(value)
+      console.log(value);
+      this.search.emit(value);
     } else {
-      this.search.emit(null)
+      this.search.emit(null);
     }
   }
 

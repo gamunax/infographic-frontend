@@ -46,9 +46,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //     });
   // }
 
-  search(value: string): void {
-    if (value) {
-      this.router.navigate([`/search/${value}`]);
+  search(value: string | any): void {
+    const searchTag = value?.target?.value || value;
+    if (searchTag) {
+      console.log(value);
+      this.router.navigate([`/search/${searchTag}`]);
     }
   }
 
