@@ -8,6 +8,7 @@ import { Infographic } from 'src/app/shared/models/infographic';
 import { PlatformBrowserService } from 'src/app/shared/services/platform-browser.service';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { LoadingService } from 'src/app/shared/services/loading.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-infographic-tag',
@@ -29,7 +30,8 @@ export class InfographicTagComponent implements OnInit {
     private location: Location,
     private platformBrowserService: PlatformBrowserService,
     protected $gaService: GoogleAnalyticsService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private title: Title
   ) {
     this.loadingService.isLoading.next(false);
     this.route.params.subscribe(({ tag }) => {
@@ -41,6 +43,7 @@ export class InfographicTagComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle(`Developer Infographic - ${this.searchTag}`)
     this.$gaService.pageView(
       this.searchTag,
       `/search/${this.searchTag}`
