@@ -17,6 +17,25 @@ export class InfographicFacade {
     private tagFacade: TagFacade
   ) { }
 
+  getSectionByTagMain(): Observable<any> {
+    return this.tagFacade.getTags()
+      .pipe(
+        mergeMap((tags: Tag[]) => {
+          return this.infographicService.getInfographicsMain()
+            .pipe(
+              map((infographics: Infographic[]) => {
+                return tags.map((item: Tag) => {
+                  const filter = infographics
+                    .filter(infographic => this.searchTag(infographic?.tags, item?.id));
+                  return filter?.length > 0 && { [item?.name]: filter };
+                }).filter(item => item)
+                  .sort((a, b) => (Number(a.order) - Number(b.order)));
+              })
+            );
+        })
+      );
+  }
+
   getSectionByTag(): Observable<any> {
     return this.tagFacade.getTags()
       .pipe(

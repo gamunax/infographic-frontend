@@ -59,7 +59,7 @@ export class CardOptionsComponent implements OnInit {
   }
 
   share(): void {
-    this.title.setTitle(`Developer and Design Infographic - ${this.value?.title}`);
+    // this.title.setTitle(`Developer and Design Infographic - ${this.value?.title}`);
     this.shareService.setGraph(
       this.https + '/' + this.value?.id + '/' + this.value?.url,
       this.value?.title,

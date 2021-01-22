@@ -9,6 +9,7 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { CardConfiguration } from '../../models/card-configuration.model';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-overlay-navigation',
@@ -46,7 +47,8 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
     private location: Location,
     private infographicFacade: InfographicFacade,
     private platformBrowserService: PlatformBrowserService,
-    protected $gaService: GoogleAnalyticsService
+    protected $gaService: GoogleAnalyticsService,
+    private title: Title
   ) {
     this.route.params.subscribe(({ id }) => {
       this.infographicId = id;
@@ -75,6 +77,7 @@ export class OverlayNavigationComponent implements OnInit, OnChanges, OnDestroy 
     this.infographicFacade.getInfographicById(this.infographicId || this.id)
       .subscribe(res => {
         this.infographic = JSON.parse(JSON.stringify(res));
+        this.title.setTitle(`Developer Infographic - ${this.infographic?.title}`)
         this.$gaService.pageView(
           this.infographic?.title,
           `/${this.infographic?.url}`

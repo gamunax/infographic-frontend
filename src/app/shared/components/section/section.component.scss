@@ -59,12 +59,16 @@ section {
     grid-template-columns: repeat(10, 260px);
   }
 
+  @include desktop {
+    grid-template-columns: repeat(10, 260px);
+  }
+
   @include tablet {
     grid-template-columns: repeat(10, 260px);
   }
 
   @include mobile {
-    grid-template-columns: repeat(4, 260px);
+    grid-template-columns: repeat(10, 260px);
   }
 }
 
