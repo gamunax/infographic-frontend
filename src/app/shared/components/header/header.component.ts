@@ -49,13 +49,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   search(value: string | any): void {
     const searchTag = value?.target?.value || value;
     if (searchTag) {
-      console.log(value);
       this.router.navigate([`/search/${searchTag}`]);
     }
   }
 
   clear(isClear: boolean): void {
-    console.log(isClear);
     this.router.navigate(['/']);
   }
 

@@ -38,7 +38,6 @@ export class AutocompleteComponent implements OnInit {
 
     const existTag = this.options.some(option => option === value);
     if (existTag) {
-      console.log(value);
       this.search.emit(value);
     } else {
       this.search.emit(null);

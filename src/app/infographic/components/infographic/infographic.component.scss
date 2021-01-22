@@ -1,7 +1,27 @@
 @import "../../../../scss/mixins";
 
-.container-fluid {
-  padding-left: 20px;
+.container {
+  max-width: 1440px;
+
+  @include extra-large {
+    max-width: 1440px;
+  }
+
+  @include mega-extra-large {
+    max-width: 1960px;
+  }
+
+  @include desktop {
+    max-width: 1200px;
+  }
+
+  @include tablet-landscape {
+    max-width: 868px;
+  }
+
+  @include tablet {
+    max-width: 600px;
+  }
 }
 
 .skeleton {
@@ -21,7 +41,6 @@
     & .tag {
     }
   }
-
 }
 
 .view-all {
@@ -46,7 +65,6 @@
       padding-left: 0;
     }
   }
-
 }
 
 #card ::ng-deep span {
