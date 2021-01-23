@@ -1,11 +1,24 @@
 @import "../../../../scss/mixins";
 
 ::ng-deep .slick-prev:before {
-  color: green;
+  color: #FF2981;
 }
 
 ::ng-deep .slick-next:before {
-  color: green;
+  color: #FF2981;
+}
+
+::ng-deep {
+  & .slick-dots li.slick-active button:before {
+    color: #FF2981;
+  }
+
+  & .slick-dots li button:before {
+    font-size: 10px;
+    color: #FF2981;
+  }
+
+
 }
 
 .main-image {
