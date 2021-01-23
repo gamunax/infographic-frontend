@@ -24,12 +24,13 @@ export class InfographicFacade {
           return this.infographicService.getInfographicsMain()
             .pipe(
               map((infographics: Infographic[]) => {
-                return tags.map((item: Tag) => {
+               return tags
+                .sort((a, b) => (Number(a.order) - Number(b.order)))
+                .map((item: Tag) => {
                   const filter = infographics
                     .filter(infographic => this.searchTag(infographic?.tags, item?.id));
                   return filter?.length > 0 && { [item?.name]: filter };
-                }).filter(item => item)
-                  .sort((a, b) => (Number(a.order) - Number(b.order)));
+                }).filter(item => item);
               })
             );
         })
