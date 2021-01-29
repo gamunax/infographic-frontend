@@ -38,13 +38,10 @@ export class InfographicFacade {
   }
 
   getSectionByTag(tagName: string): Observable<any> {
-    console.log(tagName);
     return this.tagFacade.getTags()
       .pipe(
         mergeMap((tags: Tag[]) => {
-          console.log(tags);
           const idTag = tags.find(tag => tag?.name === tagName);
-          console.log(idTag);
           return this.infographicService.getInfographicsByTag(idTag?.id)
             .pipe(
               map((infographics: Infographic[]) => {
