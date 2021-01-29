@@ -48,11 +48,10 @@ export class InfographicTagComponent implements OnInit {
       this.searchTag,
       `/search/${this.searchTag}`
     );
-    this.loadInfographics();
   }
 
   loadInfographics(): void {
-    this.infograficFacade.getSectionByTag()
+    this.infograficFacade.getSectionByTag(this.searchTag)
       .subscribe(res => {
         const find = res?.find(item => item[this.searchTag]);
         if (find) {

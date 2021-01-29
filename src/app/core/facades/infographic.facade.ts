@@ -37,11 +37,15 @@ export class InfographicFacade {
       );
   }
 
-  getSectionByTag(): Observable<any> {
+  getSectionByTag(tagName: string): Observable<any> {
+    console.log(tagName);
     return this.tagFacade.getTags()
       .pipe(
         mergeMap((tags: Tag[]) => {
-          return this.infographicService.getInfographics()
+          console.log(tags);
+          const idTag = tags.find(tag => tag?.name === tagName);
+          console.log(idTag);
+          return this.infographicService.getInfographicsByTag(idTag?.id)
             .pipe(
               map((infographics: Infographic[]) => {
                 return tags.map((item: Tag) => {
