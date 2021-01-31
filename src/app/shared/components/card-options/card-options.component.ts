@@ -6,6 +6,7 @@ import { PlatformBrowserService } from '../../services/platform-browser.service'
 import { environment } from 'src/environments/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CardConfiguration } from '../../models/card-configuration.model';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 @Component({
   selector: 'app-card-options',
@@ -28,7 +29,8 @@ export class CardOptionsComponent implements OnInit {
     private message: NzMessageService,
     private title: Title,
     private shareService: ShareService,
-    private platformBrowserService: PlatformBrowserService
+    private platformBrowserService: PlatformBrowserService,
+    protected $gaService: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,11 @@ export class CardOptionsComponent implements OnInit {
   }
 
   openShare(isOpen): void {
+    this.$gaService.event(
+      'shared',
+      'click',
+      'button'
+    );
   }
 
   focus(target): void {
