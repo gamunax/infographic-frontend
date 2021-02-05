@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { PlatformBrowserService } from '../services/platform-browser.service';
 
 @Directive({
   selector: 'img[appLazyLoad]'
@@ -8,14 +9,19 @@ export class LazyImgDirective {
   @HostBinding('attr.src') srcAttr = null;
   @Input() src: string;
 
-  constructor(private el: ElementRef) {}
+  constructor(
+    private el: ElementRef,
+    private platformBrowserService: PlatformBrowserService
+  ) {}
 
   ngAfterViewInit() {
     this.canLazyLoad() ? this.lazyLoadImage() : this.loadImage();
   }
 
   private canLazyLoad() {
-    return window && 'IntersectionObserver' in window;
+    if (this.platformBrowserService.isBrowser) {
+      return window && 'IntersectionObserver' in window;
+    }
   }
 
   private lazyLoadImage() {
