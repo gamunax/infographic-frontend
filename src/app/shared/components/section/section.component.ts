@@ -79,7 +79,7 @@ export class SectionComponent implements OnInit, OnDestroy {
         if (state.matches) {
           this.data = JSON.parse(JSON.stringify(this.dataOriginal))?.map(item => {
             const [tag] = Object.keys(item);
-            item[tag] = item[tag].filter((value, index) => index < 4);
+            item[tag] = item[tag].filter((value, index) => index < 5);
             return item;
           });
         }
