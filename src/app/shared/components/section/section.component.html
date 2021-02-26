@@ -1,7 +1,7 @@
-<cdk-virtual-scroll-viewport #scrollViewport
+<!-- <cdk-virtual-scroll-viewport #scrollViewport
   [itemSize]="49"
->
-  <section *cdkVirtualFor="let infographic of data; trackBy: trackByFn;">
+> -->
+  <section *ngFor="let infographic of data; trackBy: trackByFn;">
     <ng-container *ngFor="let tag of infographic | keyvalue; trackBy: trackByFn;">
       <div class="tag">
         <h1>{{ tag.key }}</h1>
@@ -18,7 +18,7 @@
       </div>
     </ng-container>
   </section>
-</cdk-virtual-scroll-viewport>
+<!-- </cdk-virtual-scroll-viewport> -->
 
 <ng-container *ngIf="isOpenDetail">
   <app-overlay-navigation

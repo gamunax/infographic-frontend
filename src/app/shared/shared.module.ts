@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+// import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -53,7 +53,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     SharedRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ScrollingModule,
+    // ScrollingModule,
     NzCardModule,
     SlickCarouselModule,
     NzModalModule,
