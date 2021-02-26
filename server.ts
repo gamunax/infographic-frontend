@@ -1,6 +1,7 @@
 import 'zone.js/dist/zone-node';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
+import * as compression from 'compression';
 import * as express from 'express';
 import { join } from 'path';
 
@@ -31,8 +32,11 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
+    res.set('Cache-Control', 'max-age=1200');
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
+
+  server.use(compression({ level: 6 }));
 
   return server;
 }

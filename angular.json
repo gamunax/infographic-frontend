@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/infographic-frontend/browser",
             "index": "src/index.html",
@@ -23,6 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "indexTransform": "./index-html-transform.js",
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -145,6 +146,7 @@
           "options": {
             "outputPath": "dist/infographic-frontend/server",
             "main": "server.ts",
+            "optimization": true,
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
