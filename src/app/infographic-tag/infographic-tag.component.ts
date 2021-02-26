@@ -33,8 +33,10 @@ export class InfographicTagComponent implements OnInit {
     private loadingService: LoadingService,
     private title: Title
   ) {
+    console.log('xxxxxxxxx');
     this.loadingService.isLoading.next(false);
     this.route.params.subscribe(({ tag }) => {
+      console.log(tag);
       this.loading = true;
       this.searchTag = tag;
       this.infographicSection = [];
@@ -43,7 +45,7 @@ export class InfographicTagComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle(`Developer Infographic - ${this.searchTag}`)
+    this.title.setTitle(`Developer Infographic - ${this.searchTag}`);
     this.$gaService.pageView(
       this.searchTag,
       `/search/${this.searchTag}`
@@ -73,10 +75,10 @@ export class InfographicTagComponent implements OnInit {
       }
     }
     if (infographicNavigation === NavigationType.PAGE) {
-      this.router.navigate([`/${id}/${url}`]);
+      this.router.navigate([`/detail/${id}/${url}`]);
     } else {
       if (this.platformBrowserService.isBrowser) {
-        this.location.go(`/${id}/${url}`);
+        this.location.go(`/detail/${id}/${url}`);
       }
     }
   }

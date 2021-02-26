@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfographicFacade } from 'src/app/core/facades/infographic.facade';
 import { Infographic } from 'src/app/shared/models/infographic';
 
-import { InfographicNavigation } from '../../../shared/constants/close-navigation.constant';
+import { InfographicNavigation } from '../shared/constants/close-navigation.constant';
 
 @Component({
   selector: 'app-infographic-detail',

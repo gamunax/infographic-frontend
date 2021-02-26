@@ -124,10 +124,10 @@ export class SectionComponent implements OnInit, OnDestroy {
       }
     }
     if (infographicNavigation === NavigationType.PAGE) {
-      this.router.navigate([`/${id}/${url}`]);
+      this.router.navigate([`/detail/${id}/${url}`]);
     } else {
       if (this.platformBrowserService.isBrowser) {
-        this.location.go(`/${id}/${url}`);
+        this.location.go(`/detail/${id}/${url}`);
       }
     }
   }

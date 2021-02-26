@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfographicComponent } from './components/infographic/infographic.component';
+import { InfographicDetailComponent } from './infographic-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: InfographicComponent
+    component: InfographicDetailComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class InfographicRoutingModule { }
+export class InfographicDetailRoutingModule { }
