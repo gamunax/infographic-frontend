@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import { Router } from '@angular/router';
 import { Infographic } from '../../models/infographic';
@@ -143,6 +144,10 @@ export class SectionComponent implements OnInit, OnDestroy {
 
   closeModal(isClosed): void {
     this.isOpenDetail = !isClosed;
+  }
+
+  trackByFn(index, item) {
+    return index;
   }
 
   ngOnDestroy(): void {

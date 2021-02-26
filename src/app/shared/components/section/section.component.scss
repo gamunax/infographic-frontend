@@ -5,6 +5,12 @@
   outline: none;
 }
 
+cdk-virtual-scroll-viewport{
+  height: 680px;
+  width: auto;
+  overflow-x: hidden;
+}
+
 section {
   margin-top: 30px;
 
