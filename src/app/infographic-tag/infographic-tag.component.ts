@@ -33,10 +33,8 @@ export class InfographicTagComponent implements OnInit {
     private loadingService: LoadingService,
     private title: Title
   ) {
-    console.log('xxxxxxxxx');
     this.loadingService.isLoading.next(false);
     this.route.params.subscribe(({ tag }) => {
-      console.log(tag);
       this.loading = true;
       this.searchTag = tag;
       this.infographicSection = [];
