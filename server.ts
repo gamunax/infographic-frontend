@@ -32,7 +32,6 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.set('Cache-Control', 'max-age=1200');
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
@@ -42,6 +41,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
   const port = process.env.PORT || 4000;
 
   // Start up the Node server
