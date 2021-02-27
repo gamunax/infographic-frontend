@@ -145,7 +145,6 @@
           "options": {
             "outputPath": "dist/infographic-frontend/server",
             "main": "server.ts",
-            "optimization": true,
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
