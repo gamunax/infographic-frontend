@@ -11,16 +11,16 @@ import { InfographicRoutingModule } from './infographic-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { InfographicComponent } from './components/infographic/infographic.component';
-import { InfographicDetailComponent } from './components/infographic-detail/infographic-detail.component';	
-import { InfographicTagComponent } from './components/infographic-tag/infographic-tag.component';
+// import { InfographicDetailComponent } from '../infographic-detail/infographic-detail.component';	
+// import { InfographicTagComponent } from './components/infographic-tag/infographic-tag.component';
 
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
   declarations: [
     InfographicComponent,
-    InfographicDetailComponent,
-    InfographicTagComponent
+    // InfographicDetailComponent,
+    // InfographicTagComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfographicDetailComponent } from './components/infographic-detail/infographic-detail.component';
-import { InfographicTagComponent } from './components/infographic-tag/infographic-tag.component';
+// import { InfographicDetailComponent } from '../infographic-detail/infographic-detail.component';
+// import { InfographicTagComponent } from './components/infographic-tag/infographic-tag.component';
 import { InfographicComponent } from './components/infographic/infographic.component';
 
 const routes: Routes = [
@@ -9,14 +9,15 @@ const routes: Routes = [
     path: '',
     component: InfographicComponent,
   },
-  {	
-    path: 'search/:tag',	
-    component: InfographicTagComponent	
-  },	
-  {	
-    path: 'detail/:id/:url',	
-    component: InfographicDetailComponent
-  }
+  // {	
+  //   path: 'search/:tag',	
+  //   component: InfographicTagComponent	
+  // },	
+  // {	
+  //   path: 'detail/:id/:url',	
+  //   component: InfographicDetailComponent
+  // }
+  
     // children: [
     //   {
     //     path: 'detail/:id/:url',

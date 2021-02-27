@@ -16,14 +16,14 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('./infographic/infographic.module').then(m => m.InfographicModule)
       },
-      // {
-      //   path: 'detail/:id/:url',
-      //   loadChildren: () => import('./infographic-detail/infographic-detail.module').then(m => m.InfographicDetailModule)
-      // },
-      // {
-      //   path: 'search/:tag',
-      //   loadChildren: () => import('./infographic/components/infographic-tag/infographic-tag.module').then(m => m.InfographicTagModule)
-      // }
+      {
+        path: 'detail/:id/:url',
+        loadChildren: () => import('./infographic-detail/infographic-detail.module').then(m => m.InfographicDetailModule)
+      },
+      {
+        path: 'search/:tag',
+        loadChildren: () => import('./infographic-tag/infographic-tag.module').then(m => m.InfographicTagModule)
+      }
     ]
   }
 ];
