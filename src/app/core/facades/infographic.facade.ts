@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { InfographicService } from '../services/infographic.service';
 
-import { map, mergeMap } from 'rxjs/operators';
+import { delay, map, mergeMap } from 'rxjs/operators';
 import { Tag } from 'src/app/shared/models/tag';
-import { Infographic } from 'src/app/shared/models/infographic';
+import { Infographic, InfographicTags } from 'src/app/shared/models/infographic';
 import { Observable, of } from 'rxjs';
 import { TagFacade } from './tag.facade';
 
@@ -21,31 +21,27 @@ export class InfographicFacade {
     private tagFacade: TagFacade
   ) { }
 
-  getSectionByTagMain(): Observable<any> {
+  getSectionByTagMain(tags: InfographicTags[]): Observable<any> {
     const mainInfographics = this.responseCache.get(this.cacheMainInfographic);
     if (mainInfographics) {
       return of(mainInfographics);
     }
 
-    return this.tagFacade.getTags()
+    return this.infographicService.getInfographicsMain()
       .pipe(
-        mergeMap((tags: Tag[]) => {
-          return this.infographicService.getInfographicsMain()
-            .pipe(
-              map((infographics: Infographic[]) => {
-                const result = tags
-                  .sort((a, b) => (Number(a.order) - Number(b.order)))
-                  .map((item: Tag) => {
-                    const filter = infographics
-                      .filter(infographic => this.searchTag(infographic?.tags, item?.id));
-                    return filter?.length > 0 && { [item?.name]: filter };
-                  }).filter(item => item);
-                this.responseCache.set(this.cacheMainInfographic, result)
-                return result;
-              })
-            );
+        map((infographics: Infographic[]) => {
+          const result = tags
+            .sort((a, b) => (Number(a.order) - Number(b.order)))
+            .map((item: Tag) => {
+              const filter = infographics
+                .filter(infographic => this.searchTag(infographic?.tags, item?.id));
+              return filter?.length > 0 && { [item?.name]: filter };
+            }).filter(item => item);
+          this.responseCache.set(this.cacheMainInfographic, result)
+          return result;
         })
       );
+
   }
 
   getSectionByTag(tagName: string): Observable<any> {

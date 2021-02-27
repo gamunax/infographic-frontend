@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TagFacade } from 'src/app/core/facades/tag.facade';
+import { InfographicTags } from '../../models/infographic';
 import { Tag } from '../../models/tag';
 import { LoadingService } from '../../services/loading.service';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
@@ -14,7 +15,7 @@ import { PlatformBrowserService } from '../../services/platform-browser.service'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isSearch = false;
-  tags: Tag[];
+  tags: InfographicTags[];
   isLoading = true;
   private unsubscribe = new Subject<void>();
 
@@ -31,7 +32,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getTag(): void {
-    this.tagFacade.getTags().subscribe(tags => this.tags = tags);
+    this.tagFacade.getTags().subscribe(tags => {
+      this.tags = tags
+    });
   }
 
   // loadingSkeleton(): void {

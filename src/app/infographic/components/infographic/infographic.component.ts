@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators';
+import { TagFacade } from 'src/app/core/facades/tag.facade';
+import { Tag } from 'src/app/shared/models/tag';
 import { LoadingService } from 'src/app/shared/services/loading.service';
 import { InfographicFacade } from '../../../core/facades/infographic.facade';
 import { InfographicNavigation } from '../../../shared/constants/close-navigation.constant';
@@ -24,16 +27,27 @@ export class InfographicComponent implements OnInit {
   constructor(
     private infograficFacade: InfographicFacade,
     private loadingService: LoadingService,
+    private tagFacade: TagFacade,
     private title: Title
   ) { }
 
   ngOnInit(): void {
     this.title.setTitle('Developer and Design Infographic - All infographics')
-    this.loadInfographics();
+    this.loadTags();
   }
 
-  loadInfographics(): void {
-    this.infograficFacade.getSectionByTagMain()
+  loadTags() {
+    this.tagFacade.tags$
+      .pipe(
+        filter(values => values.length > 0)
+      ).subscribe(tags => {
+        this.tags = tags
+        this.loadInfographics(this.tags)
+      });
+  }
+
+  loadInfographics(tags: InfographicTags[]): void {
+    this.infograficFacade.getSectionByTagMain(tags)
       .subscribe(res => {
         this.isLoading = false;
         this.infographicSection = res;
