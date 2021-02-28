@@ -4,6 +4,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 
 import { AppComponent } from './app.component';
@@ -39,6 +40,7 @@ const analyticsModules = environment.analytics.status ? [
     NzModalModule,
     NzSkeletonModule,
     ...analyticsModules,
+    InfiniteScrollModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

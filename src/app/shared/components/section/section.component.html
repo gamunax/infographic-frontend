@@ -1,8 +1,9 @@
 <!-- <cdk-virtual-scroll-viewport #scrollViewport
   [itemSize]="49"
 > -->
-  <section *ngFor="let infographic of data; trackBy: trackByFn;">
-    <ng-container *ngFor="let tag of infographic | keyvalue; trackBy: trackByFn;">
+<div #scrollBar infinite-scroll (scrolled)="onScrollDown()">
+  <section *ngFor="let infographic of data; trackBy: trackByFn">
+    <ng-container *ngFor="let tag of infographic | keyvalue; trackBy: trackByFn">
       <div class="tag">
         <h1>{{ tag.key }}</h1>
         <a [routerLink]="['/search', tag?.key]" class="all-view">VER TODO</a>
@@ -18,6 +19,7 @@
       </div>
     </ng-container>
   </section>
+</div>
 <!-- </cdk-virtual-scroll-viewport> -->
 
 <ng-container *ngIf="isOpenDetail">

@@ -3,6 +3,8 @@
   <ng-container *ngIf="!isLoading; else loadingResult"> -->
     <app-section
       [data]="infographicSection"
+      [page]="page"
+      (pageMore)="onScrollDown($event)"
       [infographicNavigation]="infographicNavigation.OVERLAY"
     >
     </app-section>

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedRoutingModule } from './shared-routing.module';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -65,6 +66,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     ShareButtonsModule,
     NzSkeletonModule,
     LayoutModule,
+    InfiniteScrollModule,
     NzIconModule.forRoot(icons)
   ],
   exports: [

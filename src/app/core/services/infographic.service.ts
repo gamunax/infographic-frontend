@@ -16,8 +16,8 @@ export class InfographicService {
     private http: HttpClient
   ) { }
 
-  getInfographicsMain(): Observable<Infographic[]> {
-    return this.http.get<Infographic[]>(`${this.API}/infografics/outstanding?outstanding=true`);
+  getInfographicsMain(page = 1): Observable<Infographic[]> {
+    return this.http.get<Infographic[]>(`${this.API}/infografics/outstanding/true/page/${page}`);
   }
 
   getInfographics(): Observable<Infographic[]> {

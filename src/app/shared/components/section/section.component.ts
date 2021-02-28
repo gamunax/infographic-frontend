@@ -1,12 +1,13 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 import { Router } from '@angular/router';
 import { Infographic } from '../../models/infographic';
 import { NavigationType } from '../../constants/close-navigation.constant';
 import { PlatformBrowserService } from '../../services/platform-browser.service';
+import { BehaviorSubject } from 'rxjs';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-section',
@@ -14,8 +15,13 @@ import { PlatformBrowserService } from '../../services/platform-browser.service'
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit, OnDestroy {
+  @ViewChild('scrollBar', {read: InfiniteScrollDirective}) scrollBar: InfiniteScrollDirective;
+
   @Input() data: Infographic[];
   @Input() infographicNavigation: NavigationType;
+  @Input() page;
+
+  @Output() pageMore = new EventEmitter<number>();
 
   infographics: Infographic;
   isOpenDetail = false;
@@ -67,9 +73,11 @@ export class SectionComponent implements OnInit, OnDestroy {
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.data = JSON.parse(JSON.stringify(this.dataOriginal))?.map(item => {
-            const [tag] = Object.keys(item);
-            item[tag] = item[tag].filter((value, index) => index < 4);
-            return item;
+            if (item) {
+              const [tag] = Object.keys(item);
+              item[tag] = item[tag].filter((value, index) => index < 4);
+              return item;
+            }
           });
         }
       });
@@ -150,6 +158,13 @@ export class SectionComponent implements OnInit, OnDestroy {
     return index;
   }
 
+  onScrollDown(): void {
+    this.page++;
+    this.pageMore.emit(this.page);
+  }
+
   ngOnDestroy(): void {
+    this.scrollBar.destroyScroller();
+    this.scrollBar.setup();
   }
 }
