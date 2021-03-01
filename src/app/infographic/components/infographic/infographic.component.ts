@@ -19,7 +19,7 @@ export class InfographicComponent implements OnInit, OnDestroy {
   infographicNavigation = InfographicNavigation;
   infographicSection = [];
   isLoading = true;
-  page = 1;
+  page = 0;
   private unsubscribe$ = new Subject<void>();
 
   skeletonSection = Array(2);
@@ -49,7 +49,7 @@ export class InfographicComponent implements OnInit, OnDestroy {
       });
   }
 
-  loadInfographics(tags: InfographicTags[], page = 1): void {
+  loadInfographics(tags: InfographicTags[], page = 0): void {
     this.infograficFacade.getSectionByTagMain(tags, page)
       .subscribe(res => {
         this.isLoading = false;
