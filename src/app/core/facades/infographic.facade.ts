@@ -22,10 +22,10 @@ export class InfographicFacade {
   ) { }
 
   getSectionByTagMain(tags: InfographicTags[], page: number): Observable<any> {
-    // const mainInfographics = this.responseCache.get(this.cacheMainInfographic);
-    // if (mainInfographics) {
-    //   return of(mainInfographics);
-    // }
+    const mainInfographics = this.responseCache.get(this.cacheMainInfographic);
+    if (mainInfographics) {
+      return of(mainInfographics);
+    }
 
 
     return this.infographicService.getInfographicsMain(page)
@@ -38,6 +38,7 @@ export class InfographicFacade {
                 .filter(infographic => this.searchTag(infographic?.tags, item?.id));
               return filter?.length > 0 && { [item?.name]: filter };
             }).filter(item => item);
+          this.responseCache.set(this.cacheMainInfographic, result)
           return result;
         })
       );
