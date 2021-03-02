@@ -15,7 +15,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent implements OnInit, OnDestroy {
-  @ViewChild('scrollBar', {read: InfiniteScrollDirective}) scrollBar: InfiniteScrollDirective;
+  // @ViewChild('scrollBar', {read: InfiniteScrollDirective}) scrollBar: InfiniteScrollDirective;
 
   @Input() data: Infographic[];
   @Input() infographicNavigation: NavigationType;
@@ -164,7 +164,7 @@ export class SectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollBar.destroyScroller();
-    this.scrollBar.setup();
+    // this.scrollBar.destroyScroller();
+    // this.scrollBar.setup();
   }
 }
